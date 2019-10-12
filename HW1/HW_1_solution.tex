@@ -1,173 +1,250 @@
 %%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
-  \documentclass[12pt,letterpaper]{article}
-  \usepackage{fullpage}
-  \usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
-  \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
-  \usepackage{lastpage}
-  \usepackage{enumerate}
-  \usepackage{fancyhdr}
-  \usepackage{mathrsfs}
-  \usepackage{xcolor}
-  \usepackage{graphicx}
-  \usepackage{listings}
-  \usepackage{hyperref}
-  
-  \hypersetup{%
-    colorlinks=true,
-    linkcolor=blue,
-    linkbordercolor={0 0 1}
-  }
-  
-  \setlength{\parindent}{0.0in}
-  \setlength{\parskip}{0.05in}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
-  
-  %%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
-  \newcommand\course{ECE 269}
-  \newcommand\semester{Fall 2019}
-  \newcommand\hwnumber{\#1}                 % <-- ASSIGNMENT #
-  \newcommand\NetIDa{Jiaming Lai}           % <-- YOUR NAME
-  \newcommand\NetIDb{A53314574}           % <-- STUDENT ID #
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
-  
-  %%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
-  \pagestyle{fancyplain}
-  \headheight 35pt
-  \lhead{\NetIDa}
-  \lhead{\NetIDa\\\NetIDb}                 
-  \chead{\textbf{\Large Assignment \hwnumber}}
-  \rhead{\course \\ \semester}
-  \lfoot{}
-  \cfoot{}
-  \rfoot{\small\thepage}
-  \headsep 1.5em
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
-  
-  \begin{document}
-  
-  \section*{Problem 1}
-  
-  Answer to the problem goes here.
-  Use a line per sentence.
-  Leave a blank space to start a new paragraph. Next, an example typesetting mathematics in \LaTeX .
-  
-  %%%%%%%% Math formulas %%%%%%%%
-  %%% For math formulas in text, put them between dollar signs '$'
-  %% Example: 
-  Showing that equation $a + b = \frac{c}{d}$ in evidence:
-  %%% For stand alone math formulas use "align"
-  %% Example: 
-  \begin{equation}
-      \label{eq_example}
-      a + b = \frac{c}{d}
-  \end{equation}
-  
-  Note that equation \ref{eq_example} was automatically numbered.
-  If you prefer not numbered equations, see the next example.
-  \begin{enumerate}[a)]
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\hypersetup{%
+colorlinks=true,
+linkcolor=blue,
+linkbordercolor={0 0 1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\newcommand\course{ECE 269}
+\newcommand\semester{Fall 2019}
+\newcommand\hwnumber{\#1}                 % <-- ASSIGNMENT #
+\newcommand\NetIDa{Jiaming Lai}           % <-- YOUR NAME
+\newcommand\NetIDb{A53314574}           % <-- STUDENT ID #
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \semester}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 1: Vector Spaces other than $\mathbb{R}^N$}
+
+\begin{enumerate}[a)]
+\item 
+Suppose A is a set of rational numbers defined over $\mathbb{R}$. $A_1\in{A}$.
+According to the definition of rational numbers, $A_1 = \frac{b}{a}$, where a and b
+are integers and $a\neq{0}$. Suppose $B_1\in{\mathbb{R}}$, and 
+\begin{equation}
+    B_1 = \pi \cdot A_1 = \frac{b\pi}{a} \nonumber
+\end{equation}
+Obviously, $B_1$ is not a rational number, that is $B_1\notin{A}$.
+So the set of rational numbers defined over $\mathbb{R}$ doesn't satisfy closure of scalar multification.
+So the set is not valid vector field.
+
+\item 
+Suppose set $A=\{a_0+a_1x+a_2x^2|a_0,a_1,a_2\in\mathbb{R}^+\}$. $A_1\in{A}$ and $A_1=a_0+a_1x+a_2x^2$, $a_0,a_1,a_2\in\mathbb{R}^+$.
+Let
+\begin{equation}
+    B_1 = (-1) \cdot A_1 = (-a_0)+(-a_1)x+(-a_2)x^2 \nonumber
+\end{equation}
+Obviously, $(-a_0), (-a_1), (-a_2) \notin \mathbb{R}^+$, so $B_1\notin{A}$. Hence set A doesn't satisfy closure of scalar multification.
+So set A is not valid vector field.
+
+\item 
+\begin{enumerate}[i.]
+    \item
+    Let
+    \begin{equation}
+        A = (\alpha_1+\alpha_2) \cdot
+        \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} (\alpha_1+\alpha_2)a \\ b  \end{bmatrix},
+        \alpha_1,\alpha_2 \in \mathbb{R} \nonumber
+    \end{equation}
+    \begin{equation}
+        B = \alpha_1 \cdot \begin{bmatrix} a \\ b \end{bmatrix} + \alpha_2 \cdot \begin{bmatrix} a \\ b \end{bmatrix}
+        = \begin{bmatrix} (\alpha_1+\alpha_2)a \\ 2b  \end{bmatrix},
+        \alpha_1,\alpha_2 \in \mathbb{R} \nonumber
+    \end{equation}
+    Because $B\neq{A}$, so this set doesn't satisfy the following vector space property:
+    \begin{equation}
+        (\alpha+\beta) \cdot v = \alpha \cdot v + \beta \cdot v, \alpha,\beta \in \mathcal{F}\ and\ v \in \mathcal{V} \nonumber
+    \end{equation}
+    So this set is not a valid vector field.
+
+    \item
+    Let $r = 1 \in \mathbb{R}$
+    \begin{equation}
+        r \cdot A = r \cdot \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} a \\ 0 \end{bmatrix}
+        \neq A \nonumber
+    \end{equation}
+    So this set doesn't satisfy the following vector space property:
+    \begin{equation}
+        1 \cdot v = v, where\ 1 \in \mathcal{F}\ and\ v \in \mathcal{V} \nonumber
+    \end{equation}
+    So this set is not a valid vector field.
+
+    \item
+    Suppose $B=\begin{bmatrix} a \\ b \end{bmatrix}$ and $\alpha_1,\alpha_2 \in \mathbb{R}$. Let
+    \begin{equation}
+        A_1 = (\alpha_1+\alpha_2) \cdot B = (\alpha_1+\alpha_2) \cdot \begin{bmatrix} a \\ b \end{bmatrix}
+        = \begin{bmatrix} (\alpha_1+\alpha_2)a \\ (\alpha_1+\alpha_2)b \end{bmatrix} \nonumber
+    \end{equation}
+    \begin{equation}
+        A_2 = \alpha_1 \cdot B + \alpha_2 \cdot B = 0 \nonumber
+    \end{equation}
+    Because $A_1\neq{A_2}$, so this set doesn't satisfy the following vector space property:
+    \begin{equation}
+        (\alpha_1+\alpha_2) \cdot v = \alpha_1 \cdot v + \alpha_2 \cdot v, 
+        where\ \alpha_1,\alpha_2 \in \mathcal{F}\ and\ v \in \mathcal{V} \nonumber
+    \end{equation}
+    So this set is not a valid vector field.
+
+    \item
+    Suppose
+    \begin{equation}
+        A=\begin{bmatrix} \alpha_1 \\ \beta_1 \end{bmatrix},
+        B=\begin{bmatrix} \alpha_2 \\ \beta_2 \end{bmatrix},
+        C=\begin{bmatrix} \alpha_3 \\ \beta_3 \end{bmatrix}  \nonumber
+    \end{equation}
+    Let:
+    \begin{equation}
+        A+(B+C) =\begin{bmatrix} \alpha_1 \\ \beta_1 \end{bmatrix} + (\begin{bmatrix} \alpha_2 \\ \beta_2 \end{bmatrix}+
+        \begin{bmatrix} \alpha_3 \\ \beta_3 \end{bmatrix}) = 
+        \begin{bmatrix} \alpha_1 - \alpha_2 + \alpha_3 \\ \beta_1 - \beta_2 + \beta_3 \end{bmatrix}) \nonumber
+    \end{equation}
+    \begin{equation}
+        (A+B)+C =(\begin{bmatrix} \alpha_1 \\ \beta_1 \end{bmatrix} + \begin{bmatrix} \alpha_2 \\ \beta_2 \end{bmatrix})+
+        \begin{bmatrix} \alpha_3 \\ \beta_3 \end{bmatrix} = 
+        \begin{bmatrix} \alpha_1 - \alpha_2 - \alpha_3 \\ \beta_1 - \beta_2 - \beta_3 \end{bmatrix}) \nonumber
+    \end{equation}
+    Because $A+(B+C)\neq{(A+B)+C}$, so this set doesn't satisfy the following vector space property:
+    \begin{equation}
+        A+(B+C) = (A+B)+C, 
+        where\ A,B,C \in \mathcal{V} \nonumber
+    \end{equation}
+    So this set is not a valid vector field.
+\end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 2: Adjacency graph}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 3: Vector Spaces of Polynomials}
+\begin{enumerate}[a)]
+    \item A vector space should satisfy properties (A1)-(A5) and (M1)-(M5)
+    \begin{enumerate}[({A}1).]
+        \item 
+    \end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 4: Symmetric and Hermitian matrices}
+% If the Problem is divided into items, use "enumerate"
+\begin{enumerate}[a)]
     \item 
     ``There is a student in Gryffindor who has taken all elective classes.''
-  \end{enumerate}
-  
-  \section*{Example Problem 2}
-  
-  Showing that $\neg (p \rightarrow q)$ and  $p \wedge \neg q$ are logically equivalent.
-  \begin{align*}
-     \neg (p \rightarrow q)   & \equiv \neg ( \neg p \vee q ) \\ % \\ makes a new line
-                              & \equiv \neg ( \neg p \vee q ) \\
-                              & \equiv \neg ( \neg p ) \wedge \neg ( q ) \\
-                              & \equiv p \wedge \neg q
-  \end{align*}
-  
-  Note that $\&$ is where the equations align.
-  
-  \section*{Example Problem 3}
-  
-  Constructing the \emph{Truth Table} of $(p \rightarrow q) \wedge (\neg p \leftrightarrow q)$ in Table \ref{tb_truth_table}:
-  
-  \begin{table}[h]    % [h] means to print the table here
-  \caption{Caption here. Leave it blank if you will not refer it.}
-  \label{tb_truth_table}
-      \centering  % to center the table https://www.overleaf.com/project/5d757e7e591aa30001b65c17
-      \begin{tabular}{cc|c|cc|c} % one 'c' for each column. It means centered. You can use 'l' or 'r' for left and right, respectively. '|' prints a line
-  
-          $p$ &   $q$ &   $\neg p$    &   $p \rightarrow q$  &   $\neg p \leftrightarrow q$  &   $(p \rightarrow q) \wedge (\neg p \leftrightarrow q)$ \\ \hline
-          T   &   T   &   F           &   T                   &   F                           &   F   \\
-          T   &   F   &   F           &   F                   &   T                           &   F   \\
-          F   &   T   &   T           &   T                   &   T                           &   T   \\
-          F   &   F   &   T           &   T                   &   F                           &   F   
-      \end{tabular}
-  \end{table}
-  
-  
-  \section*{Example Problem 4}
-  % If the Problem is divided into items, use "enumerate"
-  \begin{enumerate}[a)]
-      \item 
-      ``There is a student in Gryffindor who has taken all elective classes.''
-      
-      Solution:
-          \begin{equation}
-              \exists x \forall y \forall z ( H(x, \text{Gryffindor}) \wedge P(x,y) )
-          \end{equation}
-      where 
-      \begin{itemize}
-          \item[] $H(x,z)$ is ``$x$ is of $z$ house''
-          \item[] $P(x, y)$ is ``$x$ has taken $y$,''
-          \item[] the domain for $x$ consists of all students in Hogwarts
-          \item[] the domain for $y$ consists of all elective classes,
-          \item[] and the domain for $z$ consists of all Hogwarts houses.
-      \end{itemize}
-      
-      \item 
-      Give a direct proof of the theorem ``If $n$ is an odd integer, then $n^2$ is odd.''
-      
-      Solution:
-      \begin{enumerate}[1.]
-          \item 
-          \begin{equation}
-              \forall n(P(n) \rightarrow Q(n)),
-          \end{equation}
-         where
-         \begin{itemize}
-              \item[] $P(n)$ is ``$n$ is an odd integer'' and
-              \item[] $Q(n)$ is ``$n^2$ is odd.''
-         \end{itemize}
-          
-          \item 
-          Assume $P(n)$  is true.
-          
-          \item 
-          By definition, an odd integer is $n = 2k + 1$, 
-          where $k$ is some integer.
-  
-          \item
-          \begin{align*}
-              n^2 &= (2k + 1)^2 \\
-                  &= 4k^2 + 4k + 1 \\
-                  &=  2(2k^2 + 2k) + 1
-          \end{align*}
-          
-          \item 
-          $\therefore n^2$ is an odd integer. $\qed$
-      \end{enumerate}
-      
-      
-  
-      \item Let $A = \{1,2,3\}$ and $B = \{1,2,3,\{1,2,3\}\}$:
-          
-      Then, $A \in B$ and $A \subseteq B$.
-      
-      \item Let $A = \{1, 3, 5\}$, $B = \{1,2,3,\}$, and universe $U = \{1,2,3,4,5\}$:
-      \begin{align*}
-          A \cup B    &= \{1,2,3,5\}, \\
-          A \cap B    &= \{1,3\}, \\
-          A - B       &= \{5\},\\
-          \bar{A}     &= \{2,4\},\\
-          A - A       &= \emptyset .
-      \end{align*}
-  
-  \end{enumerate}
-  
-  \end{document}
-  
+    
+    Solution:
+        \begin{equation}
+            \exists x \forall y \forall z ( H(x, \text{Gryffindor}) \wedge P(x,y) )
+        \end{equation}
+    where 
+    \begin{itemize}
+        \item[] $H(x,z)$ is ``$x$ is of $z$ house''
+        \item[] $P(x, y)$ is ``$x$ has taken $y$,''
+        \item[] the domain for $x$ consists of all students in Hogwarts
+        \item[] the domain for $y$ consists of all elective classes,
+        \item[] and the domain for $z$ consists of all Hogwarts houses.
+    \end{itemize}
+    
+    \item 
+    Give a direct proof of the theorem ``If $n$ is an odd integer, then $n^2$ is odd.''
+    
+    Solution:
+    \begin{enumerate}[1.]
+        \item 
+        \begin{equation}
+            \forall n(P(n) \rightarrow Q(n)),
+        \end{equation}
+        where
+        \begin{itemize}
+            \item[] $P(n)$ is ``$n$ is an odd integer'' and
+            \item[] $Q(n)$ is ``$n^2$ is odd.''
+        \end{itemize}
+        
+        \item 
+        Assume $P(n)$  is true.
+        
+        \item 
+        By definition, an odd integer is $n = 2k + 1$, 
+        where $k$ is some integer.
+
+        \item
+        \begin{align*}
+            n^2 &= (2k + 1)^2 \\
+                &= 4k^2 + 4k + 1 \\
+                &=  2(2k^2 + 2k) + 1
+        \end{align*}
+        
+        \item 
+        $\therefore n^2$ is an odd integer. $\qed$
+    \end{enumerate}
+    
+    \item Let $A = \{1,2,3\}$ and $B = \{1,2,3,\{1,2,3\}\}$:
+        
+    Then, $A \in B$ and $A \subseteq B$.
+    
+    \item Let $A = \{1, 3, 5\}$, $B = \{1,2,3,\}$, and universe $U = \{1,2,3,4,5\}$:
+    \begin{align*}
+        A \cup B    &= \{1,2,3,5\}, \\
+        A \cap B    &= \{1,3\}, \\
+        A - B       &= \{5\},\\
+        \bar{A}     &= \{2,4\},\\
+        A - A       &= \emptyset .
+    \end{align*}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 5: Properties of Vector Spaces}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 6
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 6: Linear Independence}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 7
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 7: Finding Basis}
+\end{document}
