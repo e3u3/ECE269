@@ -167,7 +167,12 @@ $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the o
     $A_{ij}=0$ when there is no an edge. 
 
     Suppose for every $i,j$, $[A^{k-1}]_{ij}$ represents the number of paths of length $k-1$ from node $i$ to node $j$ in the original graph.
-
+    For each $k$ length path from $v_i$ to $v_j$, there exists a node $h$ such that the path could be thought of $k-1$ length path from $v_i$ to $v_h$,
+    combined with an edge from $v_h$ to $v_j$. So $[A^{k}]_{ij}$ could be represented as:
+    \begin{equation}
+        [A^{k}]_{ij}=\sum^{n}_{h=1}[A^{k-1}]_{ih}[A]_{hj} \nonumber
+    \end{equation}
+    Hence, $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the original graph.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
