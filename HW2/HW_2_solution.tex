@@ -50,104 +50,31 @@ linkbordercolor={0 0 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 1: Vector Spaces other than $\mathbb{R}^N$}
+\section*{Problem 1: Convolution as Linea Map}
 
 \textbf{Solution}
 
-\begin{enumerate}[a)]
-\item 
-Suppose A is a set of rational numbers defined over $\mathbb{R}$. $A_1\in{A}$.
-According to the definition of rational numbers, $A_1 = \frac{b}{a}$, where a and b
-are integers and $a\neq{0}$. Suppose $B_1\in{\mathbb{R}}$, and 
-\begin{equation}
-    B_1 = \pi \cdot A_1 = \frac{b\pi}{a} \nonumber
-\end{equation}
-Obviously, $B_1$ is not a rational number, that is $B_1\notin{A}$.
-So the set of rational numbers defined over $\mathbb{R}$ doesn't satisfy closure of scalar multification.
-So the set is not valid vector field.
-
-\item 
-Suppose set $A=\{a_0+a_1x+a_2x^2|a_0,a_1,a_2\in\mathbb{R}^+\}$. $A_1\in{A}$ and $A_1=a_0+a_1x+a_2x^2$, $a_0,a_1,a_2\in\mathbb{R}^+$.
-Let
-\begin{equation}
-    B_1 = (-1) \cdot A_1 = (-a_0)+(-a_1)x+(-a_2)x^2 \nonumber
-\end{equation}
-Obviously, $(-a_0), (-a_1), (-a_2) \notin \mathbb{R}^+$, so $B_1\notin{A}$. Hence set A doesn't satisfy closure of scalar multification.
-So set A is not valid vector field.
-
-\item 
-\begin{enumerate}[i.]
-    \item
-    Let
+\begin{enumerate}[(a)]
+    \item 
+    Obviously the size of matrice $T$ must be $(N+1)\times(N+1)$. Let $T_{i1},T_{i2}, \ldots ,T_{i(N+1)}$ be the i-th row of matrice $T$.
+    Since $y=Tx$, we can get
     \begin{equation}
-        A = (\alpha_1+\alpha_2) \cdot
-        \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} (\alpha_1+\alpha_2)a \\ b  \end{bmatrix},
-        \alpha_1,\alpha_2 \in \mathbb{R} \nonumber
+        v(i-1)=\sum_{j=1}^{N+1} T_{ij}u(j-1)=T_{i1}u(0)+T_{i2}u(1)+ \ldots +T_{i(N+1)}u(N) \label{ProblemF(1)}
     \end{equation}
+    Accoring to the convolution function,
     \begin{equation}
-        B = \alpha_1 \cdot \begin{bmatrix} a \\ b \end{bmatrix} + \alpha_2 \cdot \begin{bmatrix} a \\ b \end{bmatrix}
-        = \begin{bmatrix} (\alpha_1+\alpha_2)a \\ 2b  \end{bmatrix},
-        \alpha_1,\alpha_2 \in \mathbb{R} \nonumber
+        v(i-1)=\sum_{k=-\infty}^{+\infty}h(k)u(i-1-k)=\sum_{k=(i-1-N)}^{i-1}h(k)u(i-1-k) \label{ProblemF(2)}
     \end{equation}
-    Because $B\neq{A}$, so this set doesn't satisfy the following vector space property:
+    Comparing function (1) and function (2), it is easy to conclude that
     \begin{equation}
-        (\alpha+\beta) \cdot v = \alpha \cdot v + \beta \cdot v, \alpha,\beta \in \mathcal{F}\ and\ v \in \mathcal{V} \nonumber
+        T_{ij} = h(i-j), \ where\ 1\leq i \leq (N+1),\ 1\leq j \leq (N+1) \nonumber
     \end{equation}
-    So this set is not a valid vector field.
-
-    \item
-    Let $r = 1 \in \mathbb{R}$
+    So the matrice is a matrice where each element could be represented as $T_{ij} = h(i-j), \ where\ 1\leq i \leq (N+1),\ 1\leq j \leq (N+1)$.
+    \item 
+    The structure of matrice $T$ could be described as follow:
     \begin{equation}
-        r \cdot A = r \cdot \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} a \\ 0 \end{bmatrix}
-        \neq A \nonumber
+        T_{i,j} = T_{i+1,j+1} \nonumber
     \end{equation}
-    So this set doesn't satisfy the following vector space property:
-    \begin{equation}
-        1 \cdot v = v, where\ 1 \in \mathcal{F}\ and\ v \in \mathcal{V} \nonumber
-    \end{equation}
-    So this set is not a valid vector field.
-
-    \item
-    Suppose $B=\begin{bmatrix} a \\ b \end{bmatrix}$ and $\alpha_1,\alpha_2 \in \mathbb{R}$. Let
-    \begin{equation}
-        A_1 = (\alpha_1+\alpha_2) \cdot B = (\alpha_1+\alpha_2) \cdot \begin{bmatrix} a \\ b \end{bmatrix}
-        = \begin{bmatrix} (\alpha_1+\alpha_2)a \\ (\alpha_1+\alpha_2)b \end{bmatrix} \nonumber
-    \end{equation}
-    \begin{equation}
-        A_2 = \alpha_1 \cdot B + \alpha_2 \cdot B = 0 \nonumber
-    \end{equation}
-    Because $A_1\neq{A_2}$, so this set doesn't satisfy the following vector space property:
-    \begin{equation}
-        (\alpha_1+\alpha_2) \cdot v = \alpha_1 \cdot v + \alpha_2 \cdot v, 
-        where\ \alpha_1,\alpha_2 \in \mathcal{F}\ and\ v \in \mathcal{V} \nonumber
-    \end{equation}
-    So this set is not a valid vector field.
-
-    \item
-    Suppose
-    \begin{equation}
-        A=\begin{bmatrix} \alpha_1 \\ \beta_1 \end{bmatrix},
-        B=\begin{bmatrix} \alpha_2 \\ \beta_2 \end{bmatrix},
-        C=\begin{bmatrix} \alpha_3 \\ \beta_3 \end{bmatrix}  \nonumber
-    \end{equation}
-    Let:
-    \begin{equation}
-        A+(B+C) =\begin{bmatrix} \alpha_1 \\ \beta_1 \end{bmatrix} + (\begin{bmatrix} \alpha_2 \\ \beta_2 \end{bmatrix}+
-        \begin{bmatrix} \alpha_3 \\ \beta_3 \end{bmatrix}) = 
-        \begin{bmatrix} \alpha_1 - \alpha_2 + \alpha_3 \\ \beta_1 - \beta_2 + \beta_3 \end{bmatrix}) \nonumber
-    \end{equation}
-    \begin{equation}
-        (A+B)+C =(\begin{bmatrix} \alpha_1 \\ \beta_1 \end{bmatrix} + \begin{bmatrix} \alpha_2 \\ \beta_2 \end{bmatrix})+
-        \begin{bmatrix} \alpha_3 \\ \beta_3 \end{bmatrix} = 
-        \begin{bmatrix} \alpha_1 - \alpha_2 - \alpha_3 \\ \beta_1 - \beta_2 - \beta_3 \end{bmatrix}) \nonumber
-    \end{equation}
-    Because $A+(B+C)\neq{(A+B)+C}$, so this set doesn't satisfy the following vector space property:
-    \begin{equation}
-        A+(B+C) = (A+B)+C, 
-        where\ A,B,C \in \mathcal{V} \nonumber
-    \end{equation}
-    So this set is not a valid vector field.
-\end{enumerate}
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,23 +84,6 @@ So set A is not valid vector field.
 
 \textbf{Solution}
 
-A path in a graph is any sequence of vertices such that every consecutive pair of vertices in the
-sequence is connected by an edge in the graph\textit{(P129, Networks:An Introduction, Mark Newman)}.
-The length of a path is the number of edges traversed along the path (not the number of vertices).
-$B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the original graph.
-
-\begin{proof}
-    For $k=1$, the result is true since $A_{ij}=1$ when there is an edge from node $i$ to node $j$ and
-    $A_{ij}=0$ when there is no an edge. 
-
-    Suppose for every $i,j$, $[A^{k-1}]_{ij}$ represents the number of paths of length $k-1$ from node $i$ to node $j$ in the original graph.
-    For each $k$ length path from $v_i$ to $v_j$, there exists a node $h$ such that the path could be thought of $k-1$ length path from $v_i$ to $v_h$,
-    combined with an edge from $v_h$ to $v_j$. So $[A^{k}]_{ij}$ could be represented as:
-    \begin{equation}
-        [A^{k}]_{ij}=\sum^{n}_{h=1}[A^{k-1}]_{ih}[A]_{hj} \nonumber
-    \end{equation}
-    Hence, $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the original graph.
-\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 3
@@ -182,117 +92,7 @@ $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the o
 
 \textbf{Solution}
 
-\begin{enumerate}[a)]
-    \item 
-    A vector space should satisfy properties (A1)-(A5) and (M1)-(M5). Suppose $A=\sum_{k=0}^{n}a_kx^k, a_k \in \mathbb{R}$,  
-    $B=\sum_{k=0}^{n}b_kx^k, b_k \in \mathbb{R}$ and $C=\sum_{k=0}^{n}c_kx^k, c_k \in \mathbb{R}$.
-    $A,B,C\in \mathbb{P}_n(\mathbb{R})$.
-    \begin{enumerate}[({A}1).]
-        %(A1)
-        \item 
-        Because
-        \begin{equation}
-            A+B=\sum_{k=0}^{n}a_kx^k+\sum_{k=0}^{n}b_kx^k=\sum_{k=0}^{n}(a_k+b_k)x^k \in \mathbb{P}_n(\mathbb{R}),(a_k+b_k)\in\mathbb{R} \nonumber
-        \end{equation}
-        So $A+B\in{\mathbb{P}_n(\mathbb{R})}$. Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (A1).
-        %(A2)
-        \item 
-        Because
-        \begin{equation}
-            (A+B)+C=\sum_{k=0}^{n}a_kx^k+\sum_{k=0}^{n}b_kx^k+\sum_{k=0}^{n}c_kx^k
-            =\sum_{k=0}^{n}(a_k+b_k+c_k)x^k \in \mathbb{P}_n(\mathbb{R}),(a_k+b_k+c_k)\in\mathbb{R} \nonumber
-        \end{equation}
-        \begin{equation}
-            A+(B+C)=\sum_{k=0}^{n}a_kx^k+\sum_{k=0}^{n}b_kx^k+\sum_{k=0}^{n}c_kx^k
-            =\sum_{k=0}^{n}(a_k+b_k+c_k)x^k \in \mathbb{P}_n(\mathbb{R}),(a_k+b_k+c_k)\in\mathbb{R} \nonumber
-        \end{equation}
-        So $(A+B)+C=A+(B+C)$. Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (A2).
-        %(A3)
-        \item 
-        Because
-        \begin{equation}
-            A+B=\sum_{k=0}^{n}(a_k+b_k)x^k=B+A \nonumber
-        \end{equation}
-        So $A+B=B+A$. Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (A3).
-        %(A4)
-        \item 
-        Let $B=\sum_{k=0}^{n}b_kx^k, b_k=0$. For any $A \in \mathbb{P}_n(\mathbb{R})$
-        \begin{equation}
-            A+B=\sum_{k=0}^{n}(a_k+0)x^k=A \nonumber
-        \end{equation}
-        Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (A4).
-        %(A5)
-        \item 
-        \begin{equation}
-            A+(-A)=\sum_{k=0}^{n}a_kx^k+\sum_{k=0}^{n}(-a_k)x^k=\sum_{k=0}^{n}(a_k-a_k)x^k=\textbf{0}\in{\mathbb{P}_n(\mathbb{R})} \nonumber
-        \end{equation}
-        Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (A5).
-    \end{enumerate}
-    \begin{enumerate}[({M}1).]
-        %(M1)
-        \item 
-        For $\alpha\in{\mathbb{R}}$
-        \begin{equation}
-            \alpha \cdot A = \sum_{k=0}^{n}(\alpha a_k)x^k \in{\mathbb{P}_n(\mathbb{R})} \nonumber
-        \end{equation}
-        Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (M1).
-        %(M2)
-        \item 
-        For $\alpha\in{\mathbb{R}}$ and $\beta \in{\mathbb{R}}$
-        \begin{equation}
-            (\alpha\beta) \cdot A = \sum_{k=0}^{n}(\alpha\beta a_k)x^k \nonumber
-        \end{equation}
-        \begin{equation}
-            \alpha\cdot(\beta \cdot A) = \sum_{k=0}^{n}(\alpha\beta a_k)x^k \nonumber
-        \end{equation}
-        Because $(\alpha\beta) \cdot A=\alpha\cdot(\beta \cdot A)$. Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (M2).
-        %(M3)
-        \item 
-        For $\alpha\in{\mathbb{R}}$
-        \begin{equation}
-            \alpha \cdot (A+B) = \alpha\sum_{k=0}^{n}(a_k+b_k)x^k=\sum_{k=0}^{n}(\alpha a_k+\alpha b_k)x^k \nonumber
-        \end{equation}
-        \begin{equation}
-            \alpha\cdot A +  \alpha\cdot B= \sum_{k=0}^{n}(\alpha a_k+\alpha b_k)x^k \nonumber
-        \end{equation}
-        Because $\alpha \cdot (A+B)=\alpha\cdot A +  \alpha\cdot B$. Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (M3).
-        %(M4)
-        \item 
-        For $\alpha\in{\mathbb{R}}$ and $\beta \in{\mathbb{R}}$
-        \begin{equation}
-            (\alpha+\beta) \cdot A = \sum_{k=0}^{n}[(\alpha+\beta)a_k]x^k \nonumber
-        \end{equation}
-        \begin{equation}
-            \alpha\cdot A +  \beta\cdot A= \sum_{k=0}^{n}[(\alpha+\beta)a_k]x^k \nonumber
-        \end{equation}
-        Because $(\alpha+\beta) \cdot A=\alpha\cdot A +  \beta\cdot A$. Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (M4).
-        %(M5)
-        \item 
-        For $1\in{\mathbb{R}}$
-        \begin{equation}
-            1 \cdot A = \sum_{k=0}^{n}(a_k)x^k=A \nonumber
-        \end{equation}
-        Hence $\mathbb{P}_n(\mathbb{R})$ satisfy property (M5).
-    \end{enumerate}
-    In conclusion, $\mathbb{P}_n(\mathbb{R})$ satisfy properties (A1)-(A5) and (M1)-(M5).
-    The dimension of $\mathbb{P}_n(\mathbb{R})$ is $n+1$.
-    \item 
-    $\cup_{n=1}^m\mathbb{P}_n$ is also a vector space. Actually, for all $\mathbb{P}_k,k=1\ldots{m}$, $\mathbb{P}_k$ is a subspace of $\mathbb{P}_m$.
-    So the union $\cup_{n=1}^m\mathbb{P}_n$ again is a subspace of $\mathbb{P}_m$. Hence $\cup_{n=1}^m\mathbb{P}_n$ is also a vector space.
-    \item 
-    $\{1,x,x^2,x^3,x^4\}$ is a basis of $\mathbb{P}_4$. So the union set of $\{1,x,x^2,x^3,x^4\}$ and $\{1+x^2,1-x^2\}$ spans $\mathbb{P}_4$.
-    Since $dim(\mathbb{P}_4)=5$, so we can reduce the number elements in union set of $\{1,x,x^2,x^3,x^4\}$ and $\{1+x^2,1-x^2\}$ to 5 linearly independent
-    vecotrs. Obviously, both $\{1,1+x^2,1-x^2\}$ and $\{x^2,1+x^2,1-x^2\}$ are linearly dependent. For set $A$ of$\{x,x^2+1,x^2-1,x^3,x^4\}$, the only solution of
-    $k_1x+k_2(x^2+1)+k_3(x^2-1)+k_4x^3+k_5x^4=0$ is $k_1=k_2=k_3=k_4=k_5=0$, so the set A is linearly independent set.\\
-    So the basis is $\{x,x^2+1,x^2-1,x^3,x^4\}$.
-    \item 
-    Since $dim(\mathbb{P}_2)=3$, so the basis contains three vecotrs. Let
-    \begin{equation}
-        A=\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 2 \\0 & 2 & 3 \\1 & 2 & 1\end{bmatrix}
-        \Rightarrow E_A=\begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & -1 \\0 & 0 & 0 \\0 & 0 & 0 \end{bmatrix} \nonumber
-    \end{equation}
-    So the basis is $\{1+x,x+x^2,x+2x^2\}$.
-\end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 4
@@ -302,46 +102,7 @@ $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the o
 
 \textbf{Solution}
 
-\begin{enumerate}[a)]
-    \item 
-    The set of all $n\times{n}$ real-valued symmetric matrices over $\mathbb{R}$ is subset of $\mathbb{R}^{n\times{n}}$.
-    \begin{equation}
-        (A+B)^T=A^T+B^T=A+B \nonumber
-    \end{equation}
-    \begin{equation}
-        (\alpha \cdot{A})^T=\alpha \cdot{A^T}=\alpha \cdot A, \alpha \in \mathbb{R} \nonumber
-    \end{equation}
-    Obviously the set of all $n\times{n}$ real-valued symmetric matrices over $\mathbb{R}$ satisfies closure of addition and
-    scalar multification. Hence set of all $n\times{n}$ real-valued symmetric matrices over $\mathbb{R}$ is a vecotr space.
-    \item
-    The set of all $n\times{n}$ complex-valued symmetric matrices over $\mathbb{C}$ is a vecotr space. For any $A,B$ in this set
-    \begin{equation}
-        (A+B)^T=A^T+B^T=A+B \nonumber
-    \end{equation}
-    \begin{equation}
-        (\alpha \cdot{A})^T=\alpha \cdot{A^T}=\alpha \cdot A, \alpha \in \mathbb{C} \nonumber
-    \end{equation}
-    Hence set of all $n\times{n}$ complex-valued symmetric matrices over $\mathbb{C}$ satisfies closure of addition and
-    scalar multification.So it is a vecotr space.
-    \item
-    The set of all $n\times{n}$ complex-valued hermitian matrices over $\mathbb{R}$ is a vecotr space. For any $A,B$ in this set
-    \begin{equation}
-        (A+B)^H=(\overline{A+B})^T=(\overline{A}+\overline{B})^T=\overline{A}^T+\overline{B}^T=A+B \nonumber
-    \end{equation}
-    \begin{equation}
-        (\alpha \cdot{A})^H=\alpha \cdot{A^H}=\alpha \cdot A, \alpha \in \mathbb{R} \nonumber
-    \end{equation}
-    Hence set of all $n\times{n}$ complex-valued hermitian matrices over $\mathbb{R}$ satisfies closure of addition and
-    scalar multification.So it is a vecotr space.
-    \item
-    The set $\mathcal{V}$ of all $n\times{n}$ complex-valued hermitian matrices over $\mathbb{C}$ is not a vecotr space. 
-    \begin{equation}
-        v = (1+i)\cdot \begin{bmatrix}1 & 1-i \\ 1-i & 1\end{bmatrix}=
-        \begin{bmatrix}1+i & 2 \\ 2i & 1+i\end{bmatrix}\notin \mathcal{V} \nonumber
-    \end{equation}
-    So set $\mathcal{V}$ doesn't satisfies closure of scalar multification. So set of all $n\times{n}$ complex-valued
-    hermitian matrices over $\mathbb{C}$ is not a vecotr space.
-\end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 5
@@ -350,48 +111,7 @@ $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the o
 
 \textbf{Solution}
 
-\begin{enumerate}[a)]
-    \item 
-    \begin{proof}
-        Suppose $v_{I1}$ and $v_{I2}$ are two different additve inverse of an element $v$.
-        \begin{equation}
-            v+v_{I1}=0, v+v_{I2}=0 \nonumber
-        \end{equation}
-        hence
-        \begin{equation}
-            v+v_{I1}=v+v_{I2} \nonumber
-        \end{equation}
-        Add $v_{I1}$ and $v_{I2}$ to the both side, so we get
-        \begin{equation}
-            (v_{I1}+v)+v_{I1}=(v_{I1}+v)+v_{I2} \nonumber
-        \end{equation}
-        hence
-        \begin{equation}
-            \textbf{0}+v_{I1}= \textbf{0}+v_{I2} \nonumber
-        \end{equation}
-        \begin{equation}
-            v_{I1}=v_{I2} \nonumber
-        \end{equation}
-        Hence addtive inverse of an element in unique.
-    \end{proof}
-    \item 
-    \begin{proof}
-        If $S_{ext}=\{w_1,w_2,\ldots,w_N,v\}$ will not add new vectors to $span(S)$, then $v \in span(S)$, for otherwise
-        $S_{ext}=\{w_1,w_2,\ldots,w_N,v\}$ will add at least new vector $v$ to $span(S)$.
-        Conversely, suppose $v \in span(S)$. Then
-        \begin{equation}
-            span(S_{ext})=\{\alpha_1w_1+\alpha_2w_2+\ldots+\alpha_Nw_N+\alpha_{N+1}v|\alpha_1,\ldots,\alpha_{N+1}\in \mathcal{F}\} \nonumber
-        \end{equation}
-        Since $v \in span(S)$, so $v=\beta_1w_1+\beta_2w_2+\ldots+\beta_Nw_N$, hence
-        \begin{equation}
-            span(S_{ext})=\{(\alpha_1+\beta_1)w_1+\ldots+(\alpha_N+\beta_N)w_N|(\alpha_1+\beta_1),\ldots,(\alpha_N+\beta_N)\in \mathcal{F}\} \nonumber
-        \end{equation}
-        \begin{equation}
-            span(S_{ext})=span(S) \nonumber
-        \end{equation}
-        So, adding vector $v$ to $span(S)$ will not add new vectors to $span(S)$.
-    \end{proof}
-\end{enumerate}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 6
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -399,39 +119,7 @@ $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the o
 
 \textbf{Solution}
 
-\begin{enumerate}[a)]
-    \item 
-    \begin{enumerate}[i.]
-        \item 
-        Vectors $z_1,z_2,\ldots,z_n$ are linearly independent.
-        \begin{proof}
-            For equation:
-            \begin{equation}
-                k_1z_1+k_2z_2+\ldots+k_nz_n=0 \nonumber
-            \end{equation}
-            \begin{equation}
-                k_1\begin{bmatrix} x_1 \\ y_1 \end{bmatrix}+k_2\begin{bmatrix} x_2 \\ y_2 \end{bmatrix}+\ldots+k_n\begin{bmatrix} x_n \\ y_n \end{bmatrix}=0 \nonumber
-            \end{equation}
-            \begin{equation}
-                \begin{bmatrix} k_1x_1 \\ k_1y_1 \end{bmatrix}+\begin{bmatrix} k_2x_2 \\ k_2y_2 \end{bmatrix}+\ldots+\begin{bmatrix} k_nx_n \\ k_ny_n \end{bmatrix}=0 \nonumber
-            \end{equation}
-            \begin{equation}
-            \begin{bmatrix} k_1x_1+k_2x_2+\ldots+k_nx_n \\ k_1y_1+k_2y_2+\ldots+k_ny_n \end{bmatrix}=0
-        \end{equation}
-            Becauce $x_1,x_2,\ldots,x_n$ are linearly independent, the only solution for equation(1) is $k_1+k_2+\ldots+k_n=0$. So Vectors $z_1,z_2,\ldots,z_n$ are linearly independent.
-        \end{proof} 
-        \item 
-        We can't not conclude that $z_1,z_2,\ldots,z_n$ are linearly dependent.
-        \begin{proof}
-            If $y_1,y_2,\ldots,y_n$ are linearly independent, then $z_1,z_2,\ldots,z_n$ are linearly independent.
-            For example, suppose $x_1=x_2=0$ and
-            \begin{equation}
-                z_1=\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix},\ z_2\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \nonumber
-            \end{equation}
-            Obviously, $z_1,z_2$ are linearly independent. So we can't not conclude that $z_1,z_2,\ldots,z_n$ are linearly dependent.
-        \end{proof}
-    \end{enumerate}
-\end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 7
@@ -440,57 +128,6 @@ $B_{ij}$ is the number of paths of length $k$ from node $i$ to node $j$ in the o
 
 \textbf{Solution}
 
-\begin{enumerate}[a)]
-    \item 
-    For every $v\in{U\cap V}$, there exist $a_1,a_2,b_1,b_2,b_3\in \mathbb{R}$
-    \begin{equation}
-        v=a_1\begin{bmatrix} 2 \\ -1 \\ 3 \\ 0 \end{bmatrix}+a_2\begin{bmatrix} 1 \\ 0 \\ -1 \\ 0 \end{bmatrix} \nonumber
-    \end{equation}
-    \begin{equation}
-        v=b_1\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}+b_2\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}+
-        b_3\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix} \nonumber
-    \end{equation}
-    So we get
-    \begin{numcases}{} \nonumber
-        2a_1+a_2 = 0  \\ \nonumber
-        -a_1 = b_1 \\ \nonumber
-        3a_1-a_2 = b_2 \\ \nonumber
-        0 = b_3 \nonumber
-    \end{numcases} \nonumber
-    \begin{numcases}{\Rightarrow} \nonumber
-        a_2 = -2a_1  \\ \nonumber
-        b_1=-a_1 \\ \nonumber
-        b_2=5a_1\\ \nonumber
-        b_3=0 \nonumber
-    \end{numcases} \nonumber
-    So $v$ could be represented as
-    \begin{equation}
-        v=\begin{bmatrix} 0 \\ -a_1 \\ 5a_1 \\ 0 \end{bmatrix}=a_1\begin{bmatrix} 0 \\ -1 \\ 5 \\ 0 \end{bmatrix} \nonumber
-    \end{equation}
-    So basis of subspace $S$ is $\{[0,-1,5,0]^T\}$.
-    \item 
-    For a set of all vectors whose components are equal, the basis is $\{[1,1,\ldots,1]^T\}$.
-    Because for every vecotr $v$ in set of all vectors whose components are equal,
-    \begin{equation}
-        v=[a,a,\ldots,a]^T=a[1,1,\ldots,1]^T \nonumber
-    \end{equation}
-    So the basis is $\{[1,1,\ldots,1]^T\}$.
-    \item 
-    For every vecotr $v$ in set of all vectors whose components sum to zero,
-    \begin{equation}
-        v=\begin{bmatrix} a_1 \\ a_2 \\ \ldots \\ -\sum^{n-1}_{k=1}a_k \end{bmatrix}
-        =a_1\begin{bmatrix} 1 \\ 0 \\ \ldots \\ -1 \end{bmatrix}+
-        a_2\begin{bmatrix} 0 \\ 1 \\ \ldots \\ -1 \end{bmatrix}+\ldots+
-        a_{n-1}\begin{bmatrix} 0 \\ \ldots \\ 1 \\ -1 \end{bmatrix} \nonumber
-    \end{equation}
-    The set of $\{[1,0,\ldots,0,-1]^T,[0,1,\ldots,0,-1]^T,\ldots,[0,0,\ldots,1,-1]^T\}$ is linearly independent.
-    So the basis is $\{[1,0,\ldots,0,-1]^T,[0,1,\ldots,0,-1]^T,\ldots,[0,0,\ldots,1,-1]^T\}$.
-    \item 
-    \begin{equation}
-        A=\begin{bmatrix} 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 0 & 1 & 1 \end{bmatrix}
-        \Rightarrow E_A=\begin{bmatrix} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 0 & 1 & 0 \end{bmatrix} \nonumber
-    \end{equation}
-    So the basis is $\{[1,1,0,0]^T,[0,1,1,0]^T,[0,0,1,1]^T\}$
-\end{enumerate}
+
 
 \end{document}
