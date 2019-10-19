@@ -63,7 +63,7 @@ linkbordercolor={0 0 1}
     \end{equation}
     Accoring to the convolution function,
     \begin{equation}
-        v(i-1)=\sum_{k=-\infty}^{+\infty}h(k)u(i-1-k)=\sum_{k=(i-1-N)}^{i-1}h(k)u(i-1-k) \label{ProblemF(2)}
+        v(i-1)=\sum_{k=-\infty}^{+\infty}h(k)u(i-1-k)=\sum_{k=(i-1-N)}^{i-1}h(k)u(i-1-k) \label{ProblemF(2)} 
     \end{equation}
     Comparing function (1) and function (2), it is easy to conclude that
     \begin{equation}
@@ -80,54 +80,135 @@ linkbordercolor={0 0 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 2: Adjacency graph}
+\section*{Problem 2: Affine Funciton}
 
 \textbf{Solution}
 
+\begin{enumerate}[(a)]
+    \item 
+    \begin{proof}
+        For any $\alpha, \beta \in \mathbb{R}$ and any $x, y \in \mathbb{R}^n$
+        \begin{equation}
+            \alpha f(x)+\beta f(y) = \alpha (Ax+b) +\beta (Ay+b) = \alpha Ax+ \beta Ay + (\alpha + \beta)b = \alpha Ax+ \beta Ay + b \nonumber
+        \end{equation}
+        \begin{equation}
+            f(\alpha x+\beta y) = A(\alpha x+\beta y)+b =\alpha Ax+ \beta Ay +(\alpha + \beta)b =\alpha Ax+ \beta Ay + b \nonumber
+        \end{equation}
+        Hence, $\alpha f(x)+\beta f(y)=f(\alpha x+\beta y)$. So function $f(x)= Ax+b$ is affine.
+    \end{proof}
+    \item 
+    \begin{proof}
+        First we can show that $b$ is unique. Because $f(0)=b$, so $b$ must be unique, otherwise $f(0)$ will be mapped as different values in
+        $\mathbb{R}^m$, which conflicts with the function definition. Then we can show that $A$ is unique. Let function
+        \begin{equation}
+            g(x) = f(x)-f(0)=Ax+b-b=Ax \nonumber
+        \end{equation}
+        Suppose $b_1, b_2,\ldots,b_n$ are the basis of
+        $\mathbb{R}^n$ and $B=\sum_{i=1}^{n}\alpha_i b_i,\ \alpha_i \in \mathbb{R}$.
+        \begin{equation}
+            g(B) = g(\sum_{i=1}^{n}\alpha_i b_i) = A(\sum_{i=1}^{n}\alpha_i b_i) = \sum_{i=1}^{n}\alpha_i Ab_i
+            =\sum_{i=1}^{n}\alpha_i g(b_i) \nonumber
+        \end{equation}
+        Suppose $b_i = e_i,\ i=1,2,\ldots,n$, then $g(B)$ above could be represented as
+        \begin{equation}
+            \begin{split}
+                g(B)&= \begin{bmatrix}g(b_1) & g(b_2)&\ldots & g(b_n)\end{bmatrix}\begin{bmatrix}\alpha_1 \\ \alpha_2 \\ \ldots \\\alpha_n\end{bmatrix} \\
+                &= \begin{bmatrix}g(e_1) & g(e_2)&\ldots & g(e_n)\end{bmatrix}\begin{bmatrix}x_1 \\ x_2 \\ \ldots \\x_n\end{bmatrix}\\
+                &= Ax\\
+                \nonumber
+            \end{split}
+        \end{equation}
+        where 
+        \begin{itemize}
+            \item[] $x\in \mathbb{R}^n$.
+        \end{itemize}
+        Hence $A$ is unique. So any affine funciton $f$ could be represented uniquely as $f(x)=Ax+b$ for some
+        $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^{m\times n}$
+    \end{proof}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 3
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 3: Vector Spaces of Polynomials}
+\section*{Problem 3: Matrix Multification}
 
 \textbf{Solution}
 
-
+\begin{enumerate}[(a)]
+    \item 
+    Suppose
+    \begin{equation}
+        A = \begin{bmatrix}
+            1 & -1 \\
+            -1 & 1
+        \end{bmatrix}\neq 0 \nonumber
+    \end{equation}
+    \begin{equation}
+        B = \begin{bmatrix}
+            1 & 1 \\
+            1 & 1
+        \end{bmatrix}\neq 0 \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        AB=0 \nonumber
+    \end{equation}
+    Hence the statement is incorrect.
+    \item 
+    Suppose
+    \begin{equation}
+        A = \begin{bmatrix}
+            1 & -1 \\
+            1 & -1
+        \end{bmatrix}\neq 0 \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        A^2=0 \nonumber
+    \end{equation}
+    Hence the statement is incorrect.
+    \item 
+    Suppose
+    \begin{equation}
+        A = \begin{bmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots &  & \vdots \\
+            a_{n1} & a_{n2} & \ldots & a_{nn} \\
+        \end{bmatrix} \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        A^TA=
+        \begin{bmatrix}
+            a_{11}^2 & a_{12}^2 & \ldots & a_{1n}^2 \\
+            a_{21}^2 & a_{22}^2 & \ldots & a_{2n}^2 \\
+            \vdots & \vdots &  & \vdots \\
+            a_{n1}^2 & a_{n2}^2 & \ldots & a_{nn}^2 \\
+        \end{bmatrix} \nonumber
+    \end{equation}
+    So if $A^TA=0$, then $a_{ij}=0,\ 1\leq i \leq n,\ 1\leq j \leq n$. $A=0$. So the statement is correct.
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 4: Symmetric and Hermitian matrices}
-% If the Problem is divided into items, use "enumerate"
+\section*{Problem 4:  Linear Maps and Differentiation of polynomials}
 
 \textbf{Solution}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Problem 5
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 5: Properties of Vector Spaces}
-
-\textbf{Solution}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Problem 6
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 6: Linear Independence}
-
-\textbf{Solution}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Problem 7
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Problem 7: Finding Basis}
-
-\textbf{Solution}
-
-
+\begin{enumerate}[(a)]
+    \item 
+    For any $p_1(x),\ p_2(x) \in \mathcal{P}_n$,
+    \begin{equation}
+        T(p_1(x)+p_2(x))=\frac{d(p_1(x)+p_2(x))}{dx}=\frac{dp_1(x)}{dx}+ \frac{dp_2(x)}{dx} = T(p_1(x))+T(p_2(x))
+    \end{equation}
+    \begin{equation}
+        T(\alpha p_1(x))=\frac{d(\alpha p_1(x))}{dx}=\alpha \frac{dp_1(x)}{dx}= \alpha T(p_1(x))
+    \end{equation}
+    Since equations (3) and (4) are valid, $T$ is linear.
+    \item 
+    For
+\end{enumerate}
 
 \end{document}
