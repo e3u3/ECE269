@@ -27,7 +27,7 @@ linkbordercolor={0 0 1}
 %%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
 \newcommand\course{ECE 269}
 \newcommand\semester{Fall 2019}
-\newcommand\hwnumber{\#1}                 % <-- ASSIGNMENT #
+\newcommand\hwnumber{\#2}                 % <-- ASSIGNMENT #
 \newcommand\NetIDa{Jiaming Lai}           % <-- YOUR NAME
 \newcommand\NetIDb{A53314574}           % <-- STUDENT ID #
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
@@ -208,7 +208,174 @@ linkbordercolor={0 0 1}
     \end{equation}
     Since equations (3) and (4) are valid, $T$ is linear.
     \item 
-    For
+    For any $p_(x)\in \mathcal{P}_n$, by using $\{1\ x\ x^2\ \ldots\ x^n\}$ as basis, $p_(x)$ could be represented as
+    \begin{equation}
+        p_(x)=\sum_{i=0}^{n}\alpha_i x^i
+        = 
+        \begin{bmatrix}
+            1 & x & x^2 & \ldots & x^n
+        \end{bmatrix}
+        \begin{bmatrix}
+            \alpha_0  \\
+            \alpha_1  \\
+            \vdots \\
+            \alpha_n \\
+        \end{bmatrix}\nonumber
+    \end{equation}
+    Similarily
+    \begin{equation}
+        T(p_(x))=
+        \begin{bmatrix}
+            1 & x & x^2 & \ldots & x^n
+        \end{bmatrix}
+        \begin{bmatrix}
+            \alpha_1  \\
+            2\alpha_2  \\
+            \vdots \\
+            n\alpha_n \\
+            0
+        \end{bmatrix}\nonumber
+    \end{equation}
+    So we can find a matrix $A\in \mathbb{R}^{(n+1)\times (n+1)}$ that transforms the $p_(x)$ coefficient matrix to $T(p_(x))$ coefficient matrix.
+    It means that
+    \begin{equation}
+        \begin{bmatrix}
+            \alpha_1  \\
+            2\alpha_2  \\
+            \vdots \\
+            n\alpha_n \\
+            0
+        \end{bmatrix}=A
+        \begin{bmatrix}
+            \alpha_0  \\
+            \alpha_1  \\
+            \vdots \\
+            \alpha_n \\
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        A=
+        \begin{bmatrix}
+            0 & 1 & 0 & \ldots & 0 & 0 \\
+            0 & 0 & 2 & \ldots & 0 & 0  \\
+            \vdots & \vdots & \vdots &   & \vdots & \vdots  \\
+            0 & 0 & 0 & \ldots & n & 0  \\
+            0 & 0 & 0 & \ldots & 0 & 0  \\
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Obviously $rank(A)=n$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 5:  Rank of $AA^T$}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    For any $A\in \mathbb{R}^{m\times n}$,
+    \begin{equation}
+        dim[R(AA^T)]+dim[N(AA^T)]=m
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        dim[R(A^T)]+dim[N(A^T)]=m
+        \nonumber
+    \end{equation}
+    Since $rank(A)=rank(A^T)=dim[R(A^T)]$, so if we can show that $dim[N(AA^T)]=dim[N(A^T)]$, then $rank(A)=rank(AA^T)$ is valid.
+    The following will proof $dim[N(AA^T)]=dim[N(A^T)]$.\\
+    For any $x\in N(A^T)$,
+    \begin{equation}
+        A^Tx=0 \Rightarrow A(A^Tx)=0 \Rightarrow AA^Tx=0
+        \nonumber
+    \end{equation}
+    So for any $x\in N(A^T)$, $x$ also satisfies $x\in N(AA^T)$.
+    Conversely, for any $x\in N(AA^T)$,
+    \begin{equation}
+        AA^Tx=0 \Rightarrow x(AA^Tx)=0 \Rightarrow xAA^Tx=0 \Rightarrow (A^Tx)^TA^Tx=0
+        \nonumber
+    \end{equation}
+    According to the conclusion of problem3 (c), $A^Tx=0$. It means that for for any $x\in N(AA^T)$,
+    $x\in N(A^T)$. Hence $N(A^T)=N(AA^T)$ and $dim[N(AA^T)]=dim[N(A^T)]$. Further we can get
+    \begin{equation}
+        dim[R(AA^T)]=m-dim[N(AA^T)]=m-dim[N(A^T)]=dim[R(A^T)]
+        \nonumber
+    \end{equation}
+    Since $rank(A)=rank(A^T)=dim[R(A^T)]$ and $rank(AA^T)=dim[R(AA^T)]$, So
+    \begin{equation}
+        rank(A)rank(AA^T)
+        \nonumber
+    \end{equation}
+    \item 
+    The statement is invalid. Suppose
+    \begin{equation}
+        A=
+        \begin{bmatrix}
+            1 & -i \\
+            1 & -i 
+        \end{bmatrix},\ 
+        A^T=
+        \begin{bmatrix}
+            1 & 1 \\
+            -i & -i 
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        AA^T=
+        \begin{bmatrix}
+            0 & 0 \\
+            0 & 0 
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Obviously $rank(AA^T)\neq rank(A)$.
+    \item 
+    Similarily to problem(a), we can show that $N(A^H)=N(AA^H)$. For any $A\in \mathbb{C}^{m\times n}$,
+    if $x\in N(A^H)$, then
+    \begin{equation}
+        A^Hx=0 \Rightarrow AA^Hx=0 \Rightarrow x\in N(AA^H)
+        \nonumber
+    \end{equation}
+    Conversely, if $x\in N(AA^H)$, then
+    \begin{equation}
+        AA^Hx=0 \Rightarrow xAA^Hx=0 \Rightarrow (A^Hx)^HA^Hx=0
+        \nonumber
+    \end{equation}
+    Suppose $[A^Hx]_{jk}=a_{jk}+b_{jk}i$, it is easy to get that $[(A^Hx)^HA^Hx]_{jk}=a_{jk}^2+b_{jk}^2$. Hence
+    if $(A^Hx)^HA^Hx=0$, then $A^Hx=0$. So if $x\in N(AA^H)$, then $x\in N(A^H)$. In conclusion, $N(A^H)=N(AA^H)$
+    and $dim[N(A^H)]=dim[N(AA^H)]$. Since
+    \begin{equation}
+        dim[R(AA^H)]+dim[N(AA^H)]=m
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        dim[R(A^H)]+dim[N(A^H)]=m
+        \nonumber
+    \end{equation}
+    So
+    \begin{equation}
+        dim[R(A^H)]=dim[R(AA^H)] \Rightarrow rank[A]=rank[A^H]=rank[AA^H]
+        \nonumber
+    \end{equation}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 6
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 6: Left and Right Inverses}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    
 \end{enumerate}
 
 \end{document}
