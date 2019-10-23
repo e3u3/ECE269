@@ -70,11 +70,21 @@ linkbordercolor={0 0 1}
         T_{ij} = h(i-j), \ where\ 1\leq i \leq (N+1),\ 1\leq j \leq (N+1) \nonumber
     \end{equation}
     So the matrice is a matrice where each element could be represented as $T_{ij} = h(i-j), \ where\ 1\leq i \leq (N+1),\ 1\leq j \leq (N+1)$.
+    \begin{equation}
+        T=
+        \begin{bmatrix}
+            h(0) & h(-1) & \ldots & h(-N) \\
+            h(1) & h(0) & \ldots & h(-N+1) \\
+            \vdots & \vdots & &\vdots \\
+            h(N) & h(N-1) & \ldots & h(0) 
+        \end{bmatrix} \nonumber
+    \end{equation} 
     \item 
     The structure of matrice $T$ could be described as follow:
     \begin{equation}
         T_{i,j} = T_{i+1,j+1} \nonumber
     \end{equation}
+    All the elements on the same descending diagonal are the same.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,31 +108,71 @@ linkbordercolor={0 0 1}
     \end{proof}
     \item 
     \begin{proof}
-        First we can show that $b$ is unique. Because $f(0)=b$, so $b$ must be unique, otherwise $f(0)$ will be mapped as different values in
-        $\mathbb{R}^m$, which conflicts with the function definition. Then we can show that $A$ is unique. Let function
+        % First we can show that $b$ is unique. Because $f(0)=b$, so $b$ must be unique, otherwise $f(0)$ will be mapped as different values in
+        % $\mathbb{R}^m$, which conflicts with the function definition. Then we can show that $A$ is unique. Let function
+        % \begin{equation}
+        %     g(x) = f(x)-f(0)=Ax+b-b=Ax \nonumber
+        % \end{equation}
+        % Suppose $b_1, b_2,\ldots,b_n$ are the basis of
+        % $\mathbb{R}^n$ and $B=\sum_{i=1}^{n}\alpha_i b_i,\ \alpha_i \in \mathbb{R}$.
+        % \begin{equation}
+        %     g(B) = g(\sum_{i=1}^{n}\alpha_i b_i) = A(\sum_{i=1}^{n}\alpha_i b_i) = \sum_{i=1}^{n}\alpha_i Ab_i
+        %     =\sum_{i=1}^{n}\alpha_i g(b_i) \nonumber
+        % \end{equation}
+        % Suppose $b_i = e_i,\ i=1,2,\ldots,n$, then $g(B)$ above could be represented as
+        % \begin{equation}
+        %     \begin{split}
+        %         g(B)&= \begin{bmatrix}g(b_1) & g(b_2)&\ldots & g(b_n)\end{bmatrix}\begin{bmatrix}\alpha_1 \\ \alpha_2 \\ \ldots \\\alpha_n\end{bmatrix} \\
+        %         &= \begin{bmatrix}g(e_1) & g(e_2)&\ldots & g(e_n)\end{bmatrix}\begin{bmatrix}x_1 \\ x_2 \\ \ldots \\x_n\end{bmatrix}\\
+        %         &= Ax\\
+        %         \nonumber
+        %     \end{split}
+        % \end{equation}
+        % where 
+        % \begin{itemize}
+        %     \item[] $x\in \mathbb{R}^n$.
+        % \end{itemize}
+        % Hence $A$ is unique. So any affine funciton $f$ could be represented uniquely as $f(x)=Ax+b$ for some
+        % $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^{m\times n}$
+        Suppose
         \begin{equation}
-            g(x) = f(x)-f(0)=Ax+b-b=Ax \nonumber
+            g(x) = f(x)-f(0) \nonumber
         \end{equation}
-        Suppose $b_1, b_2,\ldots,b_n$ are the basis of
-        $\mathbb{R}^n$ and $B=\sum_{i=1}^{n}\alpha_i b_i,\ \alpha_i \in \mathbb{R}$.
-        \begin{equation}
-            g(B) = g(\sum_{i=1}^{n}\alpha_i b_i) = A(\sum_{i=1}^{n}\alpha_i b_i) = \sum_{i=1}^{n}\alpha_i Ab_i
-            =\sum_{i=1}^{n}\alpha_i g(b_i) \nonumber
-        \end{equation}
-        Suppose $b_i = e_i,\ i=1,2,\ldots,n$, then $g(B)$ above could be represented as
+        The following will show that $g(x)$ is linear.
         \begin{equation}
             \begin{split}
-                g(B)&= \begin{bmatrix}g(b_1) & g(b_2)&\ldots & g(b_n)\end{bmatrix}\begin{bmatrix}\alpha_1 \\ \alpha_2 \\ \ldots \\\alpha_n\end{bmatrix} \\
-                &= \begin{bmatrix}g(e_1) & g(e_2)&\ldots & g(e_n)\end{bmatrix}\begin{bmatrix}x_1 \\ x_2 \\ \ldots \\x_n\end{bmatrix}\\
-                &= Ax\\
-                \nonumber
-            \end{split}
+                g(x)+g(y) &= f(x)-f(0)+(f(y)-f(0)) \\
+                &=2[0.5f(x)+0.5f(y)]-2f(0) \\
+                &=2[f(0.5x+0.5y)]-2f(0) \\
+                &=2[f(0.5x+0.5y)+0.5*0]-2f(0) \\
+                &=2[0.5f(x+y)+0.5f(0)]-2f(0) \\
+                &=f(x+y)+f(0)-2f(0) \\
+                &=f(x+y)-f(0) \\
+                &=g(x+y)
+            \end{split} \nonumber
         \end{equation}
-        where 
-        \begin{itemize}
-            \item[] $x\in \mathbb{R}^n$.
-        \end{itemize}
-        Hence $A$ is unique. So any affine funciton $f$ could be represented uniquely as $f(x)=Ax+b$ for some
+        \begin{equation}
+            \begin{split}
+                g(\alpha x) &= f(\alpha x)-f(0) \\
+                &=f(\alpha x+(1-\alpha)*0)-f(0) \\
+                &=\alpha f(x)+(1-\alpha)f(0)-f(0) \\
+                &=\alpha f(x)-\alpha f(0) \\
+                &=\alpha g(x)
+            \end{split} \nonumber
+        \end{equation}
+        So $g(x)$ is linear. Hence $g(x)$ could be represented as $g(x)=Ax,\ A\in \mathbb{R}^{m\times n}$. The following
+        will show that $A$ is unique.\\
+        If there exits another $A_1$ such that $g(x)=A_1x,\ A\in \mathbb{R}^{m\times n}$, for any $x\in \mathbb{R}^{n}$,
+        \begin{equation}
+            A_1x = Ax \nonumber
+        \end{equation}
+        Then
+        \begin{equation}
+            (A_1-A)x = 0 \Rightarrow A_1-A=0 \Rightarrow A_1=A \nonumber
+        \end{equation}
+        Hence $A$ is unique. Meanwhile $b$ is unique. Because $f(0)=b$, so $b$ must be unique, otherwise $f(0)$ will be mapped as different values in
+        $\mathbb{R}^m$, which conflicts with the function definition. In conclusion,
+        any affine funciton $f$ could be represented uniquely as $f(x)=Ax+b$ for some
         $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^{m\times n}$
     \end{proof}
 \end{enumerate}
@@ -258,11 +308,11 @@ linkbordercolor={0 0 1}
     \begin{equation}
         A=
         \begin{bmatrix}
-            0 & 1 & 0 & \ldots & 0 & 0 \\
-            0 & 0 & 2 & \ldots & 0 & 0  \\
-            \vdots & \vdots & \vdots &   & \vdots & \vdots  \\
-            0 & 0 & 0 & \ldots & n & 0  \\
-            0 & 0 & 0 & \ldots & 0 & 0  \\
+            0 & 1 & 0 & \ldots & 0  \\
+            0 & 0 & 2 & \ldots & 0   \\
+            \vdots & \vdots & \vdots &   & \vdots   \\
+            0 & 0 & 0 & \ldots & n   \\
+            0 & 0 & 0 & \ldots & 0   \\
         \end{bmatrix}
         \nonumber
     \end{equation}
@@ -308,7 +358,7 @@ linkbordercolor={0 0 1}
     \end{equation}
     Since $rank(A)=rank(A^T)=dim[R(A^T)]$ and $rank(AA^T)=dim[R(AA^T)]$, So
     \begin{equation}
-        rank(A)rank(AA^T)
+        rank(A)=rank(AA^T)
         \nonumber
     \end{equation}
     \item 
@@ -337,7 +387,23 @@ linkbordercolor={0 0 1}
     \end{equation}
     Obviously $rank(AA^T)\neq rank(A)$.
     \item 
-    Similarily to problem(a), we can show that $N(A^H)=N(AA^H)$. For any $A\in \mathbb{C}^{m\times n}$,
+    First we will show that $rank[A]=rank[A^H]$. Suppose ${x_1,x_2,\ldots,x_k}$ is a basis of $R(A^H)$. Then
+    $Ax_1,Ax_2,\ldots,Ax_k\in R(A)$. Suppose $\sum_{i=1}^{k}c_i(Ax_i)=A\sum_{i=1}^{k}c_ix_i=0$, $v=\sum_{i=1}^{k}c_ix_i$
+    then $v\in N(A)$ and $v\in R(A^H)$. Meanwhile,
+    \begin{equation}
+        v^Hv = v^H(\sum_{i=1}^{k}c_ix_i)=v^HA^Hx=(Av)^Hx \nonumber
+    \end{equation}
+    Because $v\in N(A)$, then $v^Hv=0$. So $c_ix_i=0$, which means $c_i=0$ and thus $Ax_1,Ax_2,\ldots,Ax_k$ are linear independent.
+    So $dim[R(A^H)]=k\leq dim[R(A)]=rank(A)$.\\
+    Let $B=A^H$, then
+    \begin{equation}
+        dim[R(B^H)]\leq dim[R(B)] \Rightarrow rank(A)\leq k \nonumber
+    \end{equation}
+    So
+    \begin{equation}
+        rank(A)= k \Rightarrow rank(A)=rank(A^H) \nonumber
+    \end{equation}
+    The following is similar to problem(a), we can show that $N(A^H)=N(AA^H)$. For any $A\in \mathbb{C}^{m\times n}$,
     if $x\in N(A^H)$, then
     \begin{equation}
         A^Hx=0 \Rightarrow AA^Hx=0 \Rightarrow x\in N(AA^H)
