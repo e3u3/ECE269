@@ -227,17 +227,11 @@ linkbordercolor={0 0 1}
             a_{n1} & a_{n2} & \ldots & a_{nn} \\
         \end{bmatrix} \nonumber
     \end{equation}
-    Then
+    Then the diagonal elements of $A^TA$ is
     \begin{equation}
-        A^TA=
-        \begin{bmatrix}
-            a_{11}^2 & a_{12}^2 & \ldots & a_{1n}^2 \\
-            a_{21}^2 & a_{22}^2 & \ldots & a_{2n}^2 \\
-            \vdots & \vdots &  & \vdots \\
-            a_{n1}^2 & a_{n2}^2 & \ldots & a_{nn}^2 \\
-        \end{bmatrix} \nonumber
+        [A^TA]_{ii} = \sum_{k=1}^{n}a_{ki}^2,\ where\ 1\leq i \leq n \nonumber
     \end{equation}
-    So if $A^TA=0$, then $a_{ij}=0,\ 1\leq i \leq n,\ 1\leq j \leq n$. $A=0$. So the statement is correct.
+    So if $A^TA=0$, the diagonal elements shoule be zero. Then $a_{ij}=0,\ 1\leq i \leq n,\ 1\leq j \leq n$. $A=0$. So the statement is correct.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -414,8 +408,8 @@ linkbordercolor={0 0 1}
         AA^Hx=0 \Rightarrow xAA^Hx=0 \Rightarrow (A^Hx)^HA^Hx=0
         \nonumber
     \end{equation}
-    Suppose $[A^Hx]_{jk}=a_{jk}+b_{jk}i$, it is easy to get that $[(A^Hx)^HA^Hx]_{jk}=a_{jk}^2+b_{jk}^2$. Hence
-    if $(A^Hx)^HA^Hx=0$, then $A^Hx=0$. So if $x\in N(AA^H)$, then $x\in N(A^H)$. In conclusion, $N(A^H)=N(AA^H)$
+    Suppose $[A^Hx]_{jk}=a_{jk}+b_{jk}i$, similiar to problem3-(c), 
+    it is easy to get that if $(A^Hx)^HA^Hx=0$, then $A^Hx=0$. So if $x\in N(AA^H)$, then $x\in N(A^H)$. In conclusion, $N(A^H)=N(AA^H)$
     and $dim[N(A^H)]=dim[N(AA^H)]$. Since
     \begin{equation}
         dim[R(AA^H)]+dim[N(AA^H)]=m
