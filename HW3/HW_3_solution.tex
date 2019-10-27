@@ -1,0 +1,581 @@
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{cases}
+
+
+\hypersetup{%
+colorlinks=true,
+linkcolor=blue,
+linkbordercolor={0 0 1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\newcommand\course{ECE 269}
+\newcommand\semester{Fall 2019}
+\newcommand\hwnumber{\#3}                 % <-- ASSIGNMENT #
+\newcommand\NetIDa{Jiaming Lai}           % <-- YOUR NAME
+\newcommand\NetIDb{A53314574}           % <-- STUDENT ID #
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \semester}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 1: Orthogonal Complement of a Subspace}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    %%%%%%%%%%%
+    % Item (a)
+    %%%%%%%%%%%
+    \item 
+    Suppose $x_1, x_2 \in \mathcal{V}^\perp$, for any $y\in \mathcal{V}$
+    \begin{equation}
+        (x_1+x_2)^Ty = (x_1^T+x_2^T)y = x_1^Ty+x_2^Ty = 0 \nonumber
+    \end{equation}
+    For any $\alpha \in \mathbb{R}$,
+    \begin{equation}
+        (\alpha x_1)^Ty = \alpha x_1^Ty = 0 \nonumber
+    \end{equation}
+    Hence $\mathcal{V}^\perp$ is a subspace of $\mathbb{R}^n$.
+    %%%%%%%%%%%
+    % Item (b)
+    %%%%%%%%%%%
+    \item 
+    Because $\mathcal{V}=span(v_1,v_2,\ldots,v_k)$, for any $y\in \mathcal{V}$,
+    \begin{equation}
+        y = \sum_{i=1}^{k}\alpha_i v_i =
+        \begin{bmatrix}
+            v_1 & v_2 & \ldots & v_k
+        \end{bmatrix}
+        \begin{bmatrix}
+            \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_k
+        \end{bmatrix},
+        \ where\ \alpha_1, \ldots ,\alpha_k \in \mathbb{R}
+        \nonumber
+    \end{equation}
+    Hence $\mathcal{V} = R(A)$.\\
+    For any $y\in \mathcal{V}$,
+    \begin{equation}
+        x^Ty = x^TA
+        \begin{bmatrix}
+            \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_k
+        \end{bmatrix}
+        =0,\ \ where\ \alpha_1, \ldots ,\alpha_k \in \mathbb{R}
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow \left(A \begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_k \end{bmatrix}\right)^Tx
+        =0
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow \begin{bmatrix} \alpha_1 & \alpha_2 & \ldots & \alpha_k \end{bmatrix}A^Tx
+        =0
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow A^Tx=0
+        \nonumber
+    \end{equation}
+    Hence $\mathcal{V^\perp} = N(A^T)$.
+    %%%%%%%%%%%
+    % Item (c)
+    %%%%%%%%%%%
+    \item 
+    For any $x\in \mathcal{V}$ and any $y\in \mathcal{V}^\perp$, because $\mathcal{V} = R(A)$, then
+    \begin{equation}
+        x^Ty = (Az)^Ty = z^TA^Ty,\ where\ z \in \mathbb{R}^k \nonumber
+    \end{equation}
+    Because $y \in \mathcal{V}^\perp = N(A^T)$, hence
+    \begin{equation}
+        x^Ty = z^TA^Ty = z^T(A^Ty) = 0 \nonumber
+    \end{equation}
+    So $x \in (\mathcal{V}^\perp)^\perp$. So for any $x\in \mathcal{V}$, $x \in (\mathcal{V}^\perp)^\perp$.
+    Conversely, for any $x\in (\mathcal{V}^\perp)^\perp$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 2: Affine Funciton}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    \begin{proof}
+        For any $\alpha, \beta \in \mathbb{R}$ and any $x, y \in \mathbb{R}^n$
+        \begin{equation}
+            \alpha f(x)+\beta f(y) = \alpha (Ax+b) +\beta (Ay+b) = \alpha Ax+ \beta Ay + (\alpha + \beta)b = \alpha Ax+ \beta Ay + b \nonumber
+        \end{equation}
+        \begin{equation}
+            f(\alpha x+\beta y) = A(\alpha x+\beta y)+b =\alpha Ax+ \beta Ay +(\alpha + \beta)b =\alpha Ax+ \beta Ay + b \nonumber
+        \end{equation}
+        Hence, $\alpha f(x)+\beta f(y)=f(\alpha x+\beta y)$. So function $f(x)= Ax+b$ is affine.
+    \end{proof}
+    \item 
+    \begin{proof}
+        Suppose
+        \begin{equation}
+            g(x) = f(x)-f(0) \nonumber
+        \end{equation}
+        The following will show that $g(x)$ is linear.
+        \begin{equation}
+            \begin{split}
+                g(x)+g(y) &= f(x)-f(0)+(f(y)-f(0)) \\
+                &=2[0.5f(x)+0.5f(y)]-2f(0) \\
+                &=2[f(0.5x+0.5y)]-2f(0) \\
+                &=2[f(0.5x+0.5y)+0.5*0]-2f(0) \\
+                &=2[0.5f(x+y)+0.5f(0)]-2f(0) \\
+                &=f(x+y)+f(0)-2f(0) \\
+                &=f(x+y)-f(0) \\
+                &=g(x+y)
+            \end{split} \nonumber
+        \end{equation}
+        \begin{equation}
+            \begin{split}
+                g(\alpha x) &= f(\alpha x)-f(0) \\
+                &=f(\alpha x+(1-\alpha)*0)-f(0) \\
+                &=\alpha f(x)+(1-\alpha)f(0)-f(0) \\
+                &=\alpha f(x)-\alpha f(0) \\
+                &=\alpha g(x)
+            \end{split} \nonumber
+        \end{equation}
+        So $g(x)$ is linear. Hence $g(x)$ could be represented as $g(x)=Ax,\ A\in \mathbb{R}^{m\times n}$. The following
+        will show that $A$ is unique.\\
+        If there exits another $A_1$ such that $g(x)=A_1x,\ A\in \mathbb{R}^{m\times n}$, for any $x\in \mathbb{R}^{n}$,
+        \begin{equation}
+            A_1x = Ax \nonumber
+        \end{equation}
+        Then
+        \begin{equation}
+            (A_1-A)x = 0 \Rightarrow A_1-A=0 \Rightarrow A_1=A \nonumber
+        \end{equation}
+        Hence $A$ is unique. Meanwhile $b$ is unique. Because $f(0)=b$, so $b$ must be unique, otherwise $f(0)$ will be mapped as different values in
+        $\mathbb{R}^m$, which conflicts with the function definition. In conclusion,
+        any affine funciton $f$ could be represented uniquely as $f(x)=Ax+b$ for some
+        $A\in \mathbb{R}^{m\times n}$ and $b\in \mathbb{R}^{m\times n}$
+    \end{proof}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 3: Matrix Multification}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    Suppose
+    \begin{equation}
+        A = \begin{bmatrix}
+            1 & -1 \\
+            -1 & 1
+        \end{bmatrix}\neq 0 \nonumber
+    \end{equation}
+    \begin{equation}
+        B = \begin{bmatrix}
+            1 & 1 \\
+            1 & 1
+        \end{bmatrix}\neq 0 \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        AB=0 \nonumber
+    \end{equation}
+    Hence the statement is incorrect.
+    \item 
+    Suppose
+    \begin{equation}
+        A = \begin{bmatrix}
+            1 & -1 \\
+            1 & -1
+        \end{bmatrix}\neq 0 \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        A^2=0 \nonumber
+    \end{equation}
+    Hence the statement is incorrect.
+    \item 
+    Suppose
+    \begin{equation}
+        A = \begin{bmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots &  & \vdots \\
+            a_{n1} & a_{n2} & \ldots & a_{nn} \\
+        \end{bmatrix} \nonumber
+    \end{equation}
+    Then the diagonal elements of $A^TA$ is
+    \begin{equation}
+        [A^TA]_{ii} = \sum_{k=1}^{n}a_{ki}^2,\ where\ 1\leq i \leq n \nonumber
+    \end{equation}
+    So if $A^TA=0$, the diagonal elements shoule be zero. Then $a_{ij}=0,\ 1\leq i \leq n,\ 1\leq j \leq n$. $A=0$. So the statement is correct.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 4:  Linear Maps and Differentiation of polynomials}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    For any $p_1(x),\ p_2(x) \in \mathcal{P}_n$,
+    \begin{equation}
+        T(p_1(x)+p_2(x))=\frac{d(p_1(x)+p_2(x))}{dx}=\frac{dp_1(x)}{dx}+ \frac{dp_2(x)}{dx} = T(p_1(x))+T(p_2(x))
+    \end{equation}
+    \begin{equation}
+        T(\alpha p_1(x))=\frac{d(\alpha p_1(x))}{dx}=\alpha \frac{dp_1(x)}{dx}= \alpha T(p_1(x))
+    \end{equation}
+    Since equations (3) and (4) are valid, $T$ is linear.
+    \item 
+    For any $p_(x)\in \mathcal{P}_n$, by using $\{1\ x\ x^2\ \ldots\ x^n\}$ as basis, $p_(x)$ could be represented as
+    \begin{equation}
+        p_(x)=\sum_{i=0}^{n}\alpha_i x^i
+        = 
+        \begin{bmatrix}
+            1 & x & x^2 & \ldots & x^n
+        \end{bmatrix}
+        \begin{bmatrix}
+            \alpha_0  \\
+            \alpha_1  \\
+            \vdots \\
+            \alpha_n \\
+        \end{bmatrix}\nonumber
+    \end{equation}
+    Similarily
+    \begin{equation}
+        T(p_(x))=
+        \begin{bmatrix}
+            1 & x & x^2 & \ldots & x^n
+        \end{bmatrix}
+        \begin{bmatrix}
+            \alpha_1  \\
+            2\alpha_2  \\
+            \vdots \\
+            n\alpha_n \\
+            0
+        \end{bmatrix}\nonumber
+    \end{equation}
+    So we can find a matrix $A\in \mathbb{R}^{(n+1)\times (n+1)}$ that transforms the $p_(x)$ coefficient matrix to $T(p_(x))$ coefficient matrix.
+    It means that
+    \begin{equation}
+        \begin{bmatrix}
+            \alpha_1  \\
+            2\alpha_2  \\
+            \vdots \\
+            n\alpha_n \\
+            0
+        \end{bmatrix}=A
+        \begin{bmatrix}
+            \alpha_0  \\
+            \alpha_1  \\
+            \vdots \\
+            \alpha_n \\
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        A=
+        \begin{bmatrix}
+            0 & 1 & 0 & \ldots & 0  \\
+            0 & 0 & 2 & \ldots & 0   \\
+            \vdots & \vdots & \vdots &   & \vdots   \\
+            0 & 0 & 0 & \ldots & n   \\
+            0 & 0 & 0 & \ldots & 0   \\
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Obviously $rank(A)=n$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 5:  Rank of $AA^T$}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    For any $A\in \mathbb{R}^{m\times n}$,
+    \begin{equation}
+        dim[R(AA^T)]+dim[N(AA^T)]=m
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        dim[R(A^T)]+dim[N(A^T)]=m
+        \nonumber
+    \end{equation}
+    Since $rank(A)=rank(A^T)=dim[R(A^T)]$, so if we can show that $dim[N(AA^T)]=dim[N(A^T)]$, then $rank(A)=rank(AA^T)$ is valid.
+    The following will proof $dim[N(AA^T)]=dim[N(A^T)]$.\\
+    For any $x\in N(A^T)$,
+    \begin{equation}
+        A^Tx=0 \Rightarrow A(A^Tx)=0 \Rightarrow AA^Tx=0
+        \nonumber
+    \end{equation}
+    So for any $x\in N(A^T)$, $x$ also satisfies $x\in N(AA^T)$.
+    Conversely, for any $x\in N(AA^T)$,
+    \begin{equation}
+        AA^Tx=0 \Rightarrow x(AA^Tx)=0 \Rightarrow xAA^Tx=0 \Rightarrow (A^Tx)^TA^Tx=0
+        \nonumber
+    \end{equation}
+    According to the conclusion of problem3 (c), $A^Tx=0$. It means that for for any $x\in N(AA^T)$,
+    $x\in N(A^T)$. Hence $N(A^T)=N(AA^T)$ and $dim[N(AA^T)]=dim[N(A^T)]$. Further we can get
+    \begin{equation}
+        dim[R(AA^T)]=m-dim[N(AA^T)]=m-dim[N(A^T)]=dim[R(A^T)]
+        \nonumber
+    \end{equation}
+    Since $rank(A)=rank(A^T)=dim[R(A^T)]$ and $rank(AA^T)=dim[R(AA^T)]$, So
+    \begin{equation}
+        rank(A)=rank(AA^T)
+        \nonumber
+    \end{equation}
+    \item 
+    The statement is invalid. Suppose
+    \begin{equation}
+        A=
+        \begin{bmatrix}
+            1 & -i \\
+            1 & -i 
+        \end{bmatrix},\ 
+        A^T=
+        \begin{bmatrix}
+            1 & 1 \\
+            -i & -i 
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        AA^T=
+        \begin{bmatrix}
+            0 & 0 \\
+            0 & 0 
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Obviously $rank(AA^T)\neq rank(A)$.
+    \item 
+    First we will show that $rank[A]=rank[A^H]$. Suppose ${x_1,x_2,\ldots,x_k}$ is a basis of $R(A^H)$. Then
+    $Ax_1,Ax_2,\ldots,Ax_k\in R(A)$. Suppose $\sum_{i=1}^{k}c_i(Ax_i)=A\sum_{i=1}^{k}c_ix_i=0$, $v=\sum_{i=1}^{k}c_ix_i$
+    then $v\in N(A)$ and $v\in R(A^H)$. Meanwhile,
+    \begin{equation}
+        v^Hv = v^H(\sum_{i=1}^{k}c_ix_i)=v^HA^Hx=(Av)^Hx \nonumber
+    \end{equation}
+    Because $v\in N(A)$, then $v^Hv=0$. So $c_ix_i=0$, which means $c_i=0$ and thus $Ax_1,Ax_2,\ldots,Ax_k$ are linear independent.
+    So $dim[R(A^H)]=k\leq dim[R(A)]=rank(A)$.\\
+    Let $B=A^H$, then
+    \begin{equation}
+        dim[R(B^H)]\leq dim[R(B)] \Rightarrow rank(A)\leq k \nonumber
+    \end{equation}
+    So
+    \begin{equation}
+        rank(A)= k \Rightarrow rank(A)=rank(A^H) \nonumber
+    \end{equation}
+    The following is similar to problem(a), we can show that $N(A^H)=N(AA^H)$. For any $A\in \mathbb{C}^{m\times n}$,
+    if $x\in N(A^H)$, then
+    \begin{equation}
+        A^Hx=0 \Rightarrow AA^Hx=0 \Rightarrow x\in N(AA^H)
+        \nonumber
+    \end{equation}
+    Conversely, if $x\in N(AA^H)$, then
+    \begin{equation}
+        AA^Hx=0 \Rightarrow xAA^Hx=0 \Rightarrow (A^Hx)^HA^Hx=0
+        \nonumber
+    \end{equation}
+    Suppose $[A^Hx]_{jk}=a_{jk}+b_{jk}i$, similiar to problem3-(c), 
+    it is easy to get that if $(A^Hx)^HA^Hx=0$, then $A^Hx=0$. So if $x\in N(AA^H)$, then $x\in N(A^H)$. In conclusion, $N(A^H)=N(AA^H)$
+    and $dim[N(A^H)]=dim[N(AA^H)]$. Since
+    \begin{equation}
+        dim[R(AA^H)]+dim[N(AA^H)]=m
+        \nonumber
+    \end{equation}
+    \begin{equation}
+        dim[R(A^H)]+dim[N(A^H)]=m
+        \nonumber
+    \end{equation}
+    So
+    \begin{equation}
+        dim[R(A^H)]=dim[R(AA^H)] \Rightarrow rank[A]=rank[A^H]=rank[AA^H]
+        \nonumber
+    \end{equation}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 6
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 6: Left and Right Inverses}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item 
+    For any $x\in N(A^TA)$,
+    \begin{equation}
+        A^TAx=0 \Rightarrow x^TA^TAx=0 \Rightarrow (Ax)^TAx=0 \Rightarrow Ax=0 
+        \nonumber
+    \end{equation}
+    Since $A$ is full-rank and tall, $rank(A)=n$. Then
+    \begin{equation}
+        dim[N(A)] = n - dim[R(A)] = n -rank(A) = 0
+        \nonumber
+    \end{equation}
+    So for $Ax=0$, there must be an unique solution that is $x=0$, since $dim[N(A)]=0$.
+    Hence
+    \begin{equation}
+        dim[N(A^TA)] =  0 \Rightarrow dim[R(A^TA)] =  n
+        \nonumber
+    \end{equation}
+    So $A^TA$ is nonsingular.
+    \item 
+    \begin{equation}
+        \begin{split}
+        (A^TA)^{-1}A^TA&=A^{-1}(A^T)^{-1}A^TA \\
+        &= A^{-1}IA\\
+        &= I\\
+        \nonumber
+    \end{split}
+    \end{equation}
+    So $(A^TA)^{-1}A^T$ is a left inverse of a full-rank tall matrix $A$.
+    \item
+    % Suppose there exists another left inverse $A_1$, then
+    % \begin{equation}
+    %     \begin{split}
+    %     A_1A=I &\Rightarrow [A_1-(A^TA)^{-1}A^T]A = 0\\
+    %     &\Rightarrow A^T[A_1-(A^TA)^{-1}A^T]^T=0 \\
+    %     \nonumber
+    % \end{split}
+    % \end{equation}
+    % Since $rank(A^T)=rank(A)=n$, then
+    % \begin{equation}
+    %     dim[N(A^T)]=m-dim[R(A^T)]=m-n >0 \nonumber
+    % \end{equation}
+    % So there exists a matrix $A_1$, S.T.
+    % \begin{equation}
+    %     [A_1-(A^TA)^{-1}A^T]^T \in N(A^T)\  and\ A_1-(A^TA)^{-1}A^T \neq 0 \nonumber
+    % \end{equation}
+    % So $A$ doesn't have unique left inverse.
+    Suppose
+    \begin{equation}
+        A=
+        \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix} \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        A_1A=\begin{bmatrix}
+            1 & 3
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix}=I \nonumber
+    \end{equation}
+    \begin{equation}
+        A_2A=\begin{bmatrix}
+            1 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix}=I \nonumber
+    \end{equation}
+    So $A$ doesn't have unique left inverse.
+    \item
+    Similar to problem (a), for any $x\in N(AA^T)$,
+    \begin{equation}
+        AA^Tx=0 \Rightarrow x^TAA^Tx=0 \Rightarrow (A^Tx)^TA^Tx=0 \Rightarrow A^Tx=0 
+        \nonumber
+    \end{equation}
+    Since $A$ is full-rank and fat, $rank(A)=m$. Then
+    \begin{equation}
+        dim[N(A^T)] = m - dim[R(A^T)] = m -rank(A^T) = 0
+        \nonumber
+    \end{equation}
+    So for $A^Tx=0$, there must be an unique solution that is $x=0$, since $dim[N(A^T)]=0$.
+    Hence
+    \begin{equation}
+        dim[N(AA^T)] =  0 \Rightarrow dim[R(AA^T)] =  m
+        \nonumber
+    \end{equation}
+    So $A^TA$ is nonsingular.
+    \item 
+    \begin{equation}
+        \begin{split}
+        AA^T(AA^T)^{-1}&=AA^T(A^T)^{-1}A^{-1} \\
+        &= AIA^{-1} \\
+        &= I \\
+        \nonumber
+    \end{split}
+    \end{equation}
+    So $A^T(AA^T)^{-1}$ is a right inverse of a full-rank tall matrix $A$.
+    \item
+    Suppose
+    \begin{equation}
+        A=
+        \begin{bmatrix}
+            1 & 0
+        \end{bmatrix} \nonumber
+    \end{equation}
+    Then
+    \begin{equation}
+        AA_1=\begin{bmatrix}
+            1 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix}=I \nonumber
+    \end{equation}
+    \begin{equation}
+        AA_2=\begin{bmatrix}
+            1 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\
+            1
+        \end{bmatrix}=I \nonumber
+    \end{equation}
+    So $A$ doesn't have unique right inverse.
+\end{enumerate}
+
+\end{document}
