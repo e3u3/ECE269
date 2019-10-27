@@ -122,7 +122,52 @@ linkbordercolor={0 0 1}
         x^Ty = z^TA^Ty = z^T(A^Ty) = 0 \nonumber
     \end{equation}
     So $x \in (\mathcal{V}^\perp)^\perp$. So for any $x\in \mathcal{V}$, $x \in (\mathcal{V}^\perp)^\perp$.
-    Conversely, for any $x\in (\mathcal{V}^\perp)^\perp$
+    Conversely, for any $x\in (\mathcal{V}^\perp)^\perp$,
+    % \begin{equation}
+    %     x^Ty = 0,\ \forall y \in \mathcal{V}^\perp \nonumber
+    % \end{equation}
+    % Accroding to the definition of $\mathcal{V}^\perp$,
+    % \begin{equation}
+    %     y^Tz = 0\ \Rightarrow \ z^Ty=0,\ \forall z \in \mathcal{V} \nonumber
+    % \end{equation}
+    % Hence
+    % \begin{equation}
+    %     (x^T-z^T)y=0\ \Rightarrow \ (x-z)^Ty=0 \nonumber
+    % \end{equation}
+    % So $(x-z) \in (\mathcal{V}^\perp)^\perp$
+    %%%%%%%%%%%
+    % Item (d)
+    %%%%%%%%%%%
+    \item 
+    \begin{equation}
+        dim(\mathcal{V})=dim[R(A)]=rank(A)=rank(A^T)=dim[R(A^T)] \nonumber
+    \end{equation}
+    Meanwhile
+    \begin{equation}
+        dim(\mathcal{V}^\perp)=dim[N(A^T)] \nonumber
+    \end{equation}
+    Hence
+    \begin{equation}
+        dim(\mathcal{V})+dim(\mathcal{V}^\perp)=dim[R(A^T)]+dim[N(A^T)]=n \nonumber
+    \end{equation}
+    %%%%%%%%%%%
+    % Item (e)
+    %%%%%%%%%%%
+    \item 
+    Accoding to the definition,
+    \begin{equation}
+        \mathcal{W}^\perp = \left\{x_2\in \mathbb{R}^n:\ x_2^Ty_2=0,\ \forall y_2\in \mathcal{W}\right\} \nonumber
+    \end{equation}
+    For any $y_1\in \mathcal{V}$. Because $\mathcal{V} \subseteq \mathcal{W}$, $y_1\in \mathcal{W}$, hence
+    \begin{equation}
+        x_2^Ty_1=0\ \Rightarrow\ x_2\in \mathcal{V}^\perp \nonumber
+    \end{equation}
+    Hence $\mathcal{V} \subseteq \mathcal{W}$ for another subspace $\mathcal{W}$ implies $\mathcal{W}^\perp \subseteq \mathcal{V}^\perp$
+    %%%%%%%%%%%
+    % Item (f)
+    %%%%%%%%%%%
+    \item 
+    A
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
