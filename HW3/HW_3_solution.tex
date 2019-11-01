@@ -268,10 +268,7 @@ linkbordercolor={0 0 1}
     % Item (e)
     %%%%%%%%%%%
     \item
-    Obviously matirx $uu^T$ is square, hence
-    \begin{equation}
-        det(Q)=det(I-2uu^T)=det(I-2u^TuI)=det(I-2I)=det(-I)=-1 \nonumber
-    \end{equation}
+    
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,5 +277,68 @@ linkbordercolor={0 0 1}
 \section*{Problem 5: Projection Matrices}
 
 \textbf{Solution}
+\begin{enumerate}[(a)]
+    %%%%%%%%%%%
+    % Item (a)
+    %%%%%%%%%%%
+    \item 
+    Obviously $I-P$ is also a symmetric matrix.
+    \begin{equation}
+        \begin{split}
+            (I-P)(I-P) &= (I-P)-P(I-P)\\
+            &= I-P-P+P^2 \\
+            &= I-2P+P\\
+            &= I-P \\
+        \end{split} \nonumber
+    \end{equation}
+    So $I-P$ is also a projection matrix.
+    %%%%%%%%%%%
+    % Item (b)
+    %%%%%%%%%%%
+    \item
+    Obviously $UU^T$ is symmetric matirx.
+    \begin{equation}
+        \begin{split}
+            (UU^T)^2 &=UU^TUU^T \\
+            &=U(U^TU)U^T
+        \end{split} \nonumber
+    \end{equation}
+    Because the columns of $U$ is orthonormal, so $U^TU=I_{k\times k}$. Hence
+    \begin{equation}
+        (UU^T)^2=U(U^TU)U^T=UIU^T=UU^T \nonumber
+    \end{equation}
+    So $UU^T$ is a projection matrix.
+    %%%%%%%%%%%
+    % Item (c)
+    %%%%%%%%%%%
+    \item 
+    First we should show $P=A(A^TA)^{-1}A^T$ is a symmetric matrix.
+    \begin{equation}
+        \begin{split}
+            [A(A^TA)^{-1}A^T]^T &=A[(A^TA)^{-1}]^TA^T \\
+            &=A[(A^TA)^{T}]^{-1}A^T \\
+            &=A(A^TA)^{-1}A^T \\
+        \end{split} \nonumber
+    \end{equation}
+    So $A(A^TA)^{-1}A^T$ is a symmetric matrix. Second we should show that $P=P^2$.
+    \begin{equation}
+        \begin{split}
+            P^2 &=A(A^TA)^{-1}A^TA(A^TA)^{-1}A^T \\
+            &=A(A^TA)^{-1}IA^T \\
+            &=A(A^TA)^{-1}A^T
+        \end{split} \nonumber
+    \end{equation}
+    Hence $A(A^TA)^{-1}A^T$ is a projection matrix.
+    %%%%%%%%%%%
+    % Item (d)
+    %%%%%%%%%%%
+    \item
+    Obviously
+    %%%%%%%%%%%
+    % Item (e)
+    %%%%%%%%%%%
+    \item
+    
+\end{enumerate}
 
 \end{document}
