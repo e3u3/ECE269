@@ -333,11 +333,49 @@ linkbordercolor={0 0 1}
     % Item (d)
     %%%%%%%%%%%
     \item
-    Obviously
+    Suppose $P=[p_1,p_2,\ldots,p_n]$, where $p_i$ is the column of matrix $P$. Hence $R(P)$ could
+    be represented as $span\{p_1,p_2,\ldots,p_n\}$. For any $p_i\in \{p_1,p_2,\ldots,p_n\}$,
+    \begin{equation}
+        <x-y,p_i>=p_i^T(x-Px)=(p_i^T-p_i^TP)x
+    \end{equation}
+    If $P$ is a projection matrix, then $P=P^2$ and $P=P^T$must be valid. Therefore,
+    \begin{equation}
+        P^2=
+        \begin{bmatrix}
+            p_1^Tp_1 && p_1^Tp_2 && \ldots && p_1^Tp_n \\
+            p_2^Tp_1 && p_2^Tp_2 && \ldots && p_2^Tp_n \\
+            \vdots   && \vdots   && \      && \vdots   \\
+            p_n^Tp_1 && p_n^Tp_2 && \ldots && p_n^Tp_n \\
+        \end{bmatrix}=
+        \begin{bmatrix}
+            <p_1,p_1> && <p_2,p_1> && \ldots && <p_n,p_1> \\
+            <p_1,p_2> && <p_2,p_2> && \ldots && <p_n,p_2> \\
+            \vdots    && \vdots   &&  \      && \vdots    \\
+            <p_1,p_n> && <p_2,p_n> && \ldots && <p_n,p_n> \\
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+    Hence
+    \begin{equation}
+        p_i=[<p_1,p_1>,<p_1,p_2>,\ldots,<p_1,p_n>]^T \nonumber
+    \end{equation}
+    Because $p_i\in \mathbb{R}^n$,
+    \begin{equation}
+        p_i=[<p_1,p_1>,<p_2,p_1>,\ldots,<p_n,p_1>]^T \nonumber
+    \end{equation}
+    Using the result above into equation (1), then we get
+    \begin{equation}
+        p_i^T-p_i^TP=p_i^T-[<p_1,p_1>,<p_2,p_1>,\ldots,<p_n,p_1>]=0
+        \Rightarrow <x-y,p_i>=0 \nonumber
+    \end{equation}
+    Hence $y$ is the point in $R(P)$ closest to $x$. $y$ is the projection of x.
+    In conclusion, if $P$ is a projection matrix, then $y=Px$ is the projection of x
+    onto $R(P)$.
     %%%%%%%%%%%
     % Item (e)
     %%%%%%%%%%%
     \item
+    The thing is that we want to find a projection matrix $P$ such that $R(P)=span\{u\}$
     
 \end{enumerate}
 
