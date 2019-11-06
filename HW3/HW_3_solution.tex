@@ -123,7 +123,7 @@ linkbordercolor={0 0 1}
         x^Ty=0,\ \forall y \in \mathcal{V} \Rightarrow y^Tx=0,\ \forall y \in \mathcal{V}
         \nonumber
     \end{equation}
-    Hence $(\mathcal{V}^\perp)^\perp=\mathcal{V}^\perp$
+    Hence $(\mathcal{V}^\perp)^\perp=\mathcal{V}$
     %%%%%%%%%%%
     % Item (d)
     %%%%%%%%%%%
@@ -183,18 +183,49 @@ linkbordercolor={0 0 1}
 \section*{Problem 2: Rank of a Product}
 
 \textbf{Solution}
-\begin{enumerate}[(a)]
-    %%%%%%%%%%%
-    % Item (a)
-    %%%%%%%%%%%
-    \item 
-    Suppose
-    %%%%%%%%%%%
-    % Item (b)
-    %%%%%%%%%%%
-    \item 
-    Suppose
-\end{enumerate}
+Suppose matrix A is
+\begin{equation}
+    \begin{bmatrix}
+        a_1^T \\ a_2^T \\ a_3^T \\ a_4^T
+    \end{bmatrix} \nonumber
+\end{equation}
+\begin{equation}
+    \Rightarrow AB = \begin{bmatrix}B^Ta_1 & B^Ta_2 & B^Ta_3 & B^Ta_4\end{bmatrix}  \nonumber
+\end{equation}
+Because $Rank(A)=2$, there should be $\alpha_1,\alpha_2 \in \mathbb{R}$ such that
+$a_3=\alpha_1a_1+\alpha_2a_2$. Hence $B^Ta_3=\alpha_1B^Ta_1+\alpha_2B^Ta_2$. The same
+could be show that $B^Ta_4=\beta_1B^Ta_1+\beta_2B^Ta_2$. Hence there is two linear independent
+vectors at most in ${a_1,a_2,a_3,a_4}$. Hence
+\begin{equation}
+    rank(AB) \leq 2 \nonumber
+\end{equation}
+The folloing will show that $B^Ta_1$ and $B^Ta_2$ is linear independent.
+Suppose $\alpha_1,\alpha_2 \in \mathbb{R}$. $a_1$ and $a_2$ are linear independent.
+\begin{equation}
+    \alpha_1B^Ta_1+\alpha_2B^Ta_2=0 \Rightarrow B^T(\alpha_1a_1+\alpha_2a_2)=0 \nonumber
+\end{equation}
+Because $B$ is full-rank, so $dim(N(B^T))=3-3=0$. Hence $N(B^T)={0}$ and $\alpha_1a_1+\alpha_2a_2=0$.
+Because $a_1$ and $a_2$ are linear independent, $\alpha_1=\alpha_2=0$. So $B^Ta_1$ and $B^Ta_2$
+are linear independent. Hence
+\begin{equation}
+    rank(AB)=rank(B^TA^T) \ge 2 \nonumber
+\end{equation}
+Hence $r_{min}=r_{max}=2$. The following is the special case:
+\begin{equation}
+    A=\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+    \end{bmatrix} \nonumber
+\end{equation}
+\begin{equation}
+    B=\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+    \end{bmatrix} \nonumber
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 3
@@ -202,7 +233,33 @@ linkbordercolor={0 0 1}
 \section*{Problem 3: An Inequality for Orthonormal Matrices}
 
 \textbf{Solution}
-
+\begin{equation}
+    ||U^Tx||_2 \leq ||x||_2 \Leftrightarrow ||U^Tx||^2_2 \leq ||x||^2_2
+    \Leftrightarrow (U^Tx)^TU^Tx \leq x^Tx \nonumber
+\end{equation}
+Hence we only have to show that
+\begin{equation}
+    x^Tx-x^Tuu^Tx \ge 0 \nonumber
+\end{equation}
+\begin{equation}
+    \Rightarrow x^T(I-uu^T)x \ge 0 \nonumber
+\end{equation}
+Suppose $v=(I-uu^T)$,
+\begin{equation}
+    \begin{split}
+        v^Tv &=(I-uu^T)^T(I-uu^T) \\
+        &= (I-uu^T)(I-uu^T) \\
+        &= I-uu^T-uu^T+uu^Tuu^T \\
+        &= I-uu^T-uu^T+uIu^T \\
+        &= I-uu^T \\
+        &= v
+    \end{split} \nonumber
+\end{equation}
+Hence
+\begin{equation}
+    x^T(I-uu^T)x = x^Tvx = x^Tv^Tvx =<vx,vx> \nonumber
+\end{equation}
+Because $<vx,vx> \ge 0$, hence $x^T(I-uu^T)x \ge 0$. So $||U^Tx||_2 \leq ||x||_2$ is valid.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 4
@@ -246,16 +303,40 @@ linkbordercolor={0 0 1}
             &= v \\
         \end{split} \nonumber
     \end{equation}
+    Suppose $\hat{x}$ is the orthogonal projection of x onto $span\{u\}$, and $x_1=x-\hat{x}$ and
+    $x_2=\hat{x}=\alpha u$. In this case, $(x-\hat{x})\perp\hat{x} \Rightarrow x_1\perp x_2$ and $x=x_1+x_2$.
+    Hence
+    \begin{equation}
+        Qx_2=Q\hat{x}=\alpha Qu=-\alpha u=-x_2 \nonumber
+    \end{equation}
+    \begin{equation}
+        Qx_1=x_1 \nonumber
+    \end{equation}
+    Hence
+    \begin{equation}
+        y=Qx=Q(x_1+x_2)=x_1-x_2 \nonumber
+    \end{equation}
+    $\hat{x}$ is the orthogonal projection of x onto $span\{u\}$. $u$ is the normal vector of 
+    hyperplane $u^Tx=0$ and so $x_1$ should be the projection of x onto hyperplane $u^Tx=0$.
+    Because $x=x_1+x_2$ and $y=Qx=x_1-x_2$, orthogonal projection of x onto $span\{u\}$ changes to negative
+    but the projection of x onto hyperplane $u^Tx=0$ stay unchanged. So $y=Qx$ is actually reflect $x$
+    through the hyperplane with normal vector $u$.
     %%%%%%%%%%%
     % Item (c)
     %%%%%%%%%%%
     \item 
     Known $Q\in \mathbb{R}^{n\times n}$, suppose $u_1,u_2,\ldots,u_n$ is the column of $Q$.
     Because $Q$ is orthogonal, then $u_1,u_2,\ldots,u_n$ are orthogonal, hence $u_1,u_2,\ldots,u_n$
-    are linearly independent. Thus matrix $Q$ is full-rank and inversible. Thus given $y$,
+    are linearly independent. Thus matrix $Q$ is full-rank and inversible. Hence there is only one
+    solution. Meanwhile
     \begin{equation}
-        x = Q^{-1}y \nonumber
+        QQ=(I-2uu^T)(I-2uu^T)=Q \nonumber
     \end{equation}
+    So
+    \begin{equation}
+        Qy=QQx=x \nonumber
+    \end{equation}
+    So the unique solution is $x=Qy$
     %%%%%%%%%%%
     % Item (d)
     %%%%%%%%%%%
@@ -268,7 +349,31 @@ linkbordercolor={0 0 1}
     % Item (e)
     %%%%%%%%%%%
     \item
-    
+    Following problem (b). Suppose $\hat{x}$ is the orthogonal projection of x onto $span\{u\}$, and $x_1=x-\hat{x}$ and
+    $x_2=\hat{x}=\alpha u$. Because $Qx\in y$, suppose $Qx=\beta y$. Hence we get
+    \begin{numcases}{} \nonumber
+        x=x_1+x_2  \\ \nonumber
+        \beta y=x_1-x_2 
+    \end{numcases} \nonumber
+    so we get
+    \begin{numcases}{} \nonumber
+        x_1=0.5x+0.5\beta y  \\ \nonumber
+        x_2=0.5x-0.5\beta y 
+    \end{numcases} \nonumber
+    Since $x_1\perp x_2$, so
+    \begin{equation}
+        <2x_1,2x_2>=<x+\beta y,x-\beta y>=||x||^2_2-\beta^2||y||^2_2=0 \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow \beta^2=\frac{||x||^2_2}{||y||^2_2} \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow x_2=0.5x-0.5\frac{||x||_2}{||y||_2}y \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow u=\frac{x-\frac{||x||_2}{||y||_2}y}{||x-\frac{||x||_2}{||y||_2}y||_2} \nonumber
+    \end{equation}
+    If $0.5x-0.5\frac{||x||_2}{||y||_2}y=0$, then any unit vector $u\perp x$ will make sense.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
