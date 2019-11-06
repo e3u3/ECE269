@@ -375,8 +375,14 @@ linkbordercolor={0 0 1}
     % Item (e)
     %%%%%%%%%%%
     \item
-    The thing is that we want to find a projection matrix $P$ such that $R(P)=span\{u\}$
-    
+    Obviously, the basis of $span{u}$ is $\{u\}$. Hence there is only one solution of the Normal Equation, that is:
+    \begin{equation}
+        \alpha=(u^Tu)^{-1}u^Tx \nonumber
+    \end{equation}
+    Therefore
+    \begin{equation}
+        y=u(u^Tu)^{-1}u^Tx \ \Rightarrow\ P=u(u^Tu)^{-1}u^T=uu^T \nonumber
+    \end{equation}
 \end{enumerate}
 
 \end{document}
