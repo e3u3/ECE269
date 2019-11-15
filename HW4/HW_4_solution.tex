@@ -1,0 +1,299 @@
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{cases}
+
+
+\hypersetup{%
+colorlinks=true,
+linkcolor=blue,
+linkbordercolor={0 0 1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\newcommand\course{ECE 269}
+\newcommand\semester{Fall 2019}
+\newcommand\hwnumber{\#4}                 % <-- ASSIGNMENT #
+\newcommand\NetIDa{Jiaming Lai}           % <-- YOUR NAME
+\newcommand\NetIDb{A53314574}           % <-- STUDENT ID #
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \semester}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 1: Moore–Penrose Pseudoinverse}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    %%%%%%%%%%%
+    % Item (a)
+    %%%%%%%%%%%
+    \item 
+    According to the difinition,
+    \begin{equation}
+        AA^+A=A\ \Rightarrow \ \nonumber
+    \end{equation}
+    %%%%%%%%%%%
+    % Item (b)
+    %%%%%%%%%%%
+    \item 
+    Denote $(A^TA)^{-1}A^T$ as $A^+$. Because matrix $A$ is tall, hence $n \leq m$.
+    \begin{equation}
+        A^+A=(A^TA)^{-1}A^TA=(A^TA)^{-1}(A^TA)=I \nonumber
+    \end{equation}
+    So $(A^TA)^{-1}A^T$ a left inverse of matrix $A$.
+    \begin{equation}
+        AA^+A=A(A^+A)=AI=A \nonumber
+    \end{equation}
+    \begin{equation}
+        A^+AA^+=(A^+A)A^+=IA^+=A^+ \nonumber
+    \end{equation}
+    $A^+A=I$, so $A^+A$ is symmetric. Meanwhile,
+    \begin{equation}
+        (AA^+)^T=(A^+)^TA^T=[(A^TA)^{-1}A^T]^TA^T=A(A^TA)^{-1}A^T=AA^+ \nonumber
+    \end{equation}
+    So $AA^+$ is symmetric. In conclusion, $(A^TA)^{-1}A^T$ is the pseudoinverse and a left inverse
+    of matrix $A$.
+    %%%%%%%%%%%
+    % Item (c)
+    %%%%%%%%%%%
+    \item 
+    Denote $A^T(AA^T)^{-1}$ as $A^+$.
+    \begin{equation}
+        AA^+=AA^T(AA^T)^{-1}=(AA^T)(AA^T)^{-1}=I \nonumber
+    \end{equation}
+    So $A^T(AA^T)^{-1}$ is a right inverse of matrix $A$.
+    \begin{equation}
+        AA^+A=(AA^+)A=IA=A \nonumber
+    \end{equation}
+    \begin{equation}
+        A^+AA^+=A^+(AA^+)=A^+I=A^+ \nonumber
+    \end{equation}
+    $AA^+=I$, so $AA^+$ is symmetric. Meanwhile,
+    \begin{equation}
+        (A^+A)^T=A^T(A^+)^T=A^T[A^T(AA^T)^{-1}]^T=A^T(AA^T)^{-1}A=A^+A \nonumber
+    \end{equation}
+    so $A^+A$ is symmetric. In conclusion, $A^T(AA^T)^{-1}$ is the pseudoinverse
+    and a right inverse of matrix $A$.
+    %%%%%%%%%%%
+    % Item (d)
+    %%%%%%%%%%%
+    \item 
+    \begin{equation}
+        AA^{-1}A=IA=A\ and\ A^{-1}AA^{-1}=IA^{-1}=A^{-1} \nonumber
+    \end{equation}
+    Also $AA^{-1}=A^{-1}A=I$ is symmetric. So in conclusion, $A^{-1}$ is
+    the pseudoinverse of a full-rank square matrix $A$.
+    %%%%%%%%%%%
+    % Item (e)
+    %%%%%%%%%%%
+    \item 
+    For a projection matrix $A$, $A^2=A$ and $A^T=A$. Hence
+    \begin{equation}
+        AAA=AA=A \nonumber
+    \end{equation}
+    Because $A^T=A$, so $AA$ is symmetric. In conclusion, $A$ is
+    the pseudoinverse of itself for a projection matrix $A$.
+    %%%%%%%%%%%
+    % Item (f)
+    %%%%%%%%%%%
+    \item 
+    \begin{equation}
+        A^T(A^+)^TA^T=[AA^+A]^T=A^T \nonumber
+    \end{equation}
+    \begin{equation}
+        (A^+)^TA^T(A^+)^T=[A^+AA^+]^T=(A^+)^T \nonumber
+    \end{equation}
+    Meanwhile,
+    \begin{equation}
+        [A^T(A^+)^T]^T=A^+A\ \Rightarrow\ symmetric \nonumber
+    \end{equation}
+    \begin{equation}
+        [(A^+)^TA^T]^T=AA^+\ \Rightarrow\ symmetric \nonumber
+    \end{equation}
+    So in conclusion, $(A^T)^+=(A^+)^T$.
+    %%%%%%%%%%%
+    % Item (g)
+    %%%%%%%%%%%
+    \item 
+    \begin{enumerate}[i.]
+        \item
+        
+    \end{enumerate}
+    %%%%%%%%%%%
+    % Item (h)
+    %%%%%%%%%%%
+    \item 
+    
+    %%%%%%%%%%%
+    % Item (i)
+    %%%%%%%%%%%
+    \item 
+    First, both $AA^+$ and $A^+A$ are symmetric. Second,
+    \begin{equation}
+        P^2=AA^+AA^+=AA^+ \nonumber
+    \end{equation}
+    \begin{equation}
+        Q^2=A^+AA^+A=A^+A \nonumber
+    \end{equation}
+    Hence $P$ and $Q$ are projection matrix.
+    %%%%%%%%%%%
+    % Item (j)
+    %%%%%%%%%%%
+    \item 
+    Recall the result of problem 5 in Homework 3, $y=Px$ is the projection of $x$
+    onto $R(P)$. For $\forall y \in R(P)$, there must exists $x\in \mathbb{R}^m$ S.T.
+    \begin{equation}
+        y=AA^+x\ \Rightarrow\ y=A(A^+x) \nonumber
+    \end{equation}
+    Hence for $\forall y \in R(P)$, there must exists $z=A^+x\in \mathbb{R}^n$, S.T.
+    $y=Az$. Hence $R(P)=R(A)$. So $y=Px$ is the projection of $x$ onto $R(A)$.\\
+
+    Similarly, $y=Qx$ is the projection of $x$ onto $R(Q)$. 
+    For $\forall y \in R(Q)$, there must exists $x\in \mathbb{R}^n$ S.T.
+    \begin{equation}
+        y=A^+Ax\ \Rightarrow\ y=A^+(Ax) \nonumber
+    \end{equation}
+    Hence for $\forall y \in R(Q)$, there must exists $z=Ax\in \mathbb{R}^m$, S.T.
+    $y=A^+z$. Hence $R(Q)=R(A^+)=R(A^T)$. So $y=Qx$ is the projection 
+    of $x$ onto $R(A^T)$.
+    %%%%%%%%%%%
+    % Item (k)
+    %%%%%%%%%%%
+    \item 
+    The solution $x^*$ must satiffies that $Ax^*$ is the orthogonal projection of
+    $b$ onto $R(A)$. Recall the result in problem (j), the projection matrix onto
+    $R(A)$ is $P=AA^+$, hence
+    \begin{equation}
+        Ax^*=AA^+b\ \Rightarrow\ x^*=A^+b \nonumber
+    \end{equation}
+    %%%%%%%%%%%
+    % Item (l)
+    %%%%%%%%%%%
+    \item 
+    
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 2: Eigenvalues}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item
+    The characteristic polynomial of $A$ is
+    \begin{equation}
+        p(\lambda)=det(\lambda I-A)=(\lambda-\lambda _1)(\lambda-\lambda _2)\ldots
+        (\lambda-\lambda _n) \nonumber
+    \end{equation}
+    Hence
+    \begin{equation}
+        p(\lambda=0)=(-1)^ndet(A)=(-1)^n\lambda _1 \lambda _2\ldots \lambda _n \nonumber
+    \end{equation}
+    So $det(A)=\lambda _1 \lambda _2\ldots \lambda _n$.
+    \item
+    Suppose matrix $A$ is
+    \begin{equation}
+        \begin{bmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots &        & \vdots \\
+            a_{n1} & a_{n2} & \ldots & a_{nn} \\
+        \end{bmatrix} \nonumber
+    \end{equation}
+    \begin{equation}
+        \lambda I-A=
+        \begin{bmatrix}
+            \lambda-a_{11} & -a_{12}        & \ldots & -a_{1n} \\
+                   -a_{21} & \lambda-a_{22} & \ldots & -a_{2n} \\
+            \vdots         &  \vdots        &        & \vdots \\
+                   -a_{n1} & -a_{n2}        & \ldots & \lambda-a_{nn} \\
+        \end{bmatrix} \nonumber
+    \end{equation}
+    Meanwhile
+    \begin{equation}
+        \lambda I-A^T=
+        \begin{bmatrix}
+            \lambda-a_{11} & -a_{21}        & \ldots & -a_{n1} \\
+                   -a_{12} & \lambda-a_{22} & \ldots & -a_{n2} \\
+            \vdots         &  \vdots        &        & \vdots \\
+                   -a_{1n} & -a_{2n}        & \ldots & \lambda-a_{nn} \\
+        \end{bmatrix} \nonumber
+    \end{equation}
+    According to the definition of determinant, we can easily see that
+    $det(\lambda I-A)=det(\lambda I-A^T)$. $A^T$ and $A$ have the same 
+    characteristic polynomial. Hence the eigenvalues of $A^T$ and
+    $A$ are the same.
+    \item
+    
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 3: Trace}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item
+    The
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 4: More on Eigenvalues}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item
+    The
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problem 5: Limit}
+
+\textbf{Solution}
+
+\begin{enumerate}[(a)]
+    \item
+    The
+\end{enumerate}
+
+\end{document}
