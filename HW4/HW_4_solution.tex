@@ -59,10 +59,23 @@ linkbordercolor={0 0 1}
     % Item (a)
     %%%%%%%%%%%
     \item 
-    According to the difinition,
+    Suppose $A^+$ is not unique and there is $A_1^+$ and $A_2^+$. According to the difinition,
+    for any matrix $A\in \mathbb{R}^{m\times n}$,
     \begin{equation}
-        AA^+A=A\ \Rightarrow \ \nonumber
+        AA_1^+A=A \nonumber
     \end{equation}
+    \begin{equation}
+        AA_2^+A=A \nonumber
+    \end{equation}
+    \begin{equation}
+        \Rightarrow (AA_1^+-AA_2^+)A=A(A_1^+A-A_2^+A)=0 \nonumber
+    \end{equation}
+    Because the above equation is valid for any matrix $A\in \mathbb{R}^{m\times n}$, hence
+    there must be $AA_1^+=AA_2^+$ and $A_1^+A=A_2^+A$. So
+    \begin{equation}
+        A^+_1=A_1^+AA_1^+=A_1^+AA_2^+=A_2^+AA^+_2=A^+_2 \nonumber
+    \end{equation}
+    Hence $A^+$ must be unique.
     %%%%%%%%%%%
     % Item (b)
     %%%%%%%%%%%
@@ -220,44 +233,67 @@ linkbordercolor={0 0 1}
     \end{equation}
     Hence
     \begin{equation}
-        p(\lambda=0)=(-1)^ndet(A)=(-1)^n\lambda _1 \lambda _2\ldots \lambda _n \nonumber
+        p(\lambda=0)=det(-A)=(-1)^ndet(A)=(-1)^n\lambda _1 \lambda _2\ldots \lambda _n \nonumber
     \end{equation}
     So $det(A)=\lambda _1 \lambda _2\ldots \lambda _n$.
     \item
-    Suppose matrix $A$ is
+    Because
     \begin{equation}
-        \begin{bmatrix}
-            a_{11} & a_{12} & \ldots & a_{1n} \\
-            a_{21} & a_{22} & \ldots & a_{2n} \\
-            \vdots & \vdots &        & \vdots \\
-            a_{n1} & a_{n2} & \ldots & a_{nn} \\
-        \end{bmatrix} \nonumber
+        \lambda I-A^T=(\lambda I-A)^T \nonumber
     \end{equation}
+    and
     \begin{equation}
-        \lambda I-A=
-        \begin{bmatrix}
-            \lambda-a_{11} & -a_{12}        & \ldots & -a_{1n} \\
-                   -a_{21} & \lambda-a_{22} & \ldots & -a_{2n} \\
-            \vdots         &  \vdots        &        & \vdots \\
-                   -a_{n1} & -a_{n2}        & \ldots & \lambda-a_{nn} \\
-        \end{bmatrix} \nonumber
+        det((\lambda I-A)^T)=det(\lambda I-A) \nonumber
     \end{equation}
-    Meanwhile
-    \begin{equation}
-        \lambda I-A^T=
-        \begin{bmatrix}
-            \lambda-a_{11} & -a_{21}        & \ldots & -a_{n1} \\
-                   -a_{12} & \lambda-a_{22} & \ldots & -a_{n2} \\
-            \vdots         &  \vdots        &        & \vdots \\
-                   -a_{1n} & -a_{2n}        & \ldots & \lambda-a_{nn} \\
-        \end{bmatrix} \nonumber
-    \end{equation}
-    According to the definition of determinant, we can easily see that
-    $det(\lambda I-A)=det(\lambda I-A^T)$. $A^T$ and $A$ have the same 
+    So $det(\lambda I-A)=det(\lambda I-A^T)$. $A^T$ and $A$ have the same 
     characteristic polynomial. Hence the eigenvalues of $A^T$ and
     $A$ are the same.
     \item
-    
+    Give the fact that $Av=\lambda _{i}v$, where $i=1,2,\ldots,n$,
+    \begin{equation}
+        A^kv=A^{k-1}\lambda _iv=A^{k-2}\lambda _i^2v=\ldots=\lambda _i^kv \nonumber
+    \end{equation}
+    Hence $\lambda _i^k,\ i=1,2,\ldots,n$ are eigenvalues of matrix $A^k$.
+    \item
+    If matrix $A$ is invertible, then suppose matrix $A$ has a zero eigenvalue $\lambda$. 
+    There must be a vector $v\neq 0$, S.T.
+    \begin{equation}
+        Av=\lambda v =0 \nonumber
+    \end{equation}
+    Obviously $v\in N(A)$. Because $A$ is invertible, so $dim(N(A)=0)\Rightarrow N(A)={0}$. Hence
+    $v=0$. But this contradicts the fact that $v\neq 0$. So if $A$ is invertible, it does not have
+    a zero eigenvalue.\\
+
+    If matrix $A$ does not have a zero eigenvalue, then there is no a vector $v\neq 0$ S.T.
+    \begin{equation}
+        Av=\lambda v,\ \lambda =0\ \Rightarrow\ Av=0 \nonumber
+    \end{equation}
+    The only solution to $Av=0$ is $v=0$, which means $dim[N(A)]=0$. Hence matrix $A$ is full-rank
+    and invertible.\\
+
+    In conclusion, $A$ is invertible if and only if it does not have a zero eigenvalue.
+    \item
+    Accoding to the definition,
+    \begin{equation}
+        Av=\lambda _iv\ \Rightarrow\ A^{-1}Av=\lambda _iA^{-1}v\ \Rightarrow\ 
+        v=\lambda _iA^{-1}v\ \Rightarrow\ \lambda _i^{-1}v=A^{-1}v \nonumber
+    \end{equation}
+    Hence $\lambda _i^{-1},\ i=1,2,\ldots,n$ are eigenvalues of $A^{-1}$.
+    \item
+    The characteristic polynomial of $T^{-1}AT$ is
+    \begin{equation}
+        \begin{split}
+            det(T^{-1}AT-\lambda I)&=det(T^{-1}AT-\lambda T^{-1}IT) \\
+            &=det[T^{-1}(A-\lambda I)T] \\
+            &=det(T^{-1})det(A-\lambda I)det(T)
+        \end{split}
+        \nonumber
+    \end{equation}
+    Because $det(T^{-1})det(T)=det(T^{-1}T)=1$. Hence
+    \begin{equation}
+        det(T^{-1}AT-\lambda I)=det(A-\lambda I) \nonumber
+    \end{equation}
+    So $A$ and $T^{-1}AT$ have the same eigenvalues.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -270,6 +306,12 @@ linkbordercolor={0 0 1}
 \begin{enumerate}[(a)]
     \item
     The
+    \item
+    Using the result from problem 2(c), $\lambda _i^k,\ i=1,2,\ldots,n$
+    are eigenvalues of matrix $A^k$. Hence
+    \begin{equation}
+        tr(A^k)=\sum_{i=1}^{n}\lambda _i^k \nonumber
+    \end{equation}
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -281,7 +323,7 @@ linkbordercolor={0 0 1}
 
 \begin{enumerate}[(a)]
     \item
-    The
+    
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
