@@ -161,13 +161,44 @@ linkbordercolor={0 0 1}
     \item 
     \begin{enumerate}[i.]
         \item
-        
+        \begin{equation}
+            AA^T[(A^+)^TA^+]AA^T=A(A^+A)^TA^+AA^T=A(A^+A)A^+AA^T=AA^+AA^T=AA^T \nonumber
+        \end{equation}
+        Hence $(AA^T)^+=(A^+)^TA^+$.
+        \item
+        \begin{equation}
+            A^TA[A^+(A^+)^T]A^TA=A^TAA^+(AA^+)^TA=A^TAA^+AA^+A=A^TA \nonumber
+        \end{equation}
+        Hence $(A^TA)^+=A^+(A^+)^T$.
     \end{enumerate}
     %%%%%%%%%%%
     % Item (h)
     %%%%%%%%%%%
     \item 
-    
+    \begin{enumerate}[i.]
+        \item
+        For any $y\in R(A^+)$, there exit a vector $x$. S.T.
+        \begin{equation}
+            y=A^+x=A^+AA^+x=(A^+A)^TA^+x=A^T(A^+)^TA^+x \nonumber
+        \end{equation}
+        Hence $y\in R(A^T)$ and $R(A^+) \subset R(A^T)$.
+        For any $y\in R(A^T)$, there exit a vector $x$. S.T.
+        \begin{equation}
+            y=A^Tx=A^T(A^T)^+A^Tx=A^T(A^+)^TA^Tx=(A^+A)^TA^Tx=A^+AA^Tx \nonumber
+        \end{equation}
+        Hence $y\in R(A^+)$ and $R(A^T) \subset R(A^+)$. In conclusion, $R(A^T)=R(A^+)$.
+        \item
+        For any $x\in N(A^T)$, $A^Tx=0$, hence
+        \begin{equation}
+            A^+x=A^+AA^+x=A^+(AA^+)^Tx=A^+(A^+)^TA^Tx=0 \nonumber
+        \end{equation}
+        So $N(A^T)\subset R(A^+)$.
+        For any $x\in N(A^+)$, $A^+x=0$, hence
+        \begin{equation}
+            A^Tx=A^T(A^+)^TA^Tx=A^T(AA^+)^Tx=A^TAA^+x=0 \nonumber
+        \end{equation}
+        So $N(A^+)\subset R(A^T)$. In conclusion, $N(A^T)=N(A^+)$.
+    \end{enumerate}
     %%%%%%%%%%%
     % Item (i)
     %%%%%%%%%%%
@@ -204,12 +235,13 @@ linkbordercolor={0 0 1}
     % Item (k)
     %%%%%%%%%%%
     \item 
-    The solution $x^*$ must satiffies that $Ax^*$ is the orthogonal projection of
-    $b$ onto $R(A)$. Recall the result in problem (j), the projection matrix onto
-    $R(A)$ is $P=AA^+$, hence
+    Recall the result in problem (j), the projection matrix onto
+    $R(A)$ is $P=AA^+$,
     \begin{equation}
-        Ax^*=AA^+b\ \Rightarrow\ x^*=A^+b \nonumber
+        Ax^*=AA^+b \nonumber
     \end{equation}
+    Hence $Ax^*$ is the orthogonal projection of $b$ onto $R(A)$.
+    Hence $x^*=A^+b$ is a least-squares solution.
     %%%%%%%%%%%
     % Item (l)
     %%%%%%%%%%%
