@@ -246,7 +246,9 @@ linkbordercolor={0 0 1}
     % Item (l)
     %%%%%%%%%%%
     \item 
-    
+    It is clear that $x^*=A^+b=A^+Ax$ is the orthogonal projection of x
+    onto $R(A)$. Hence $(x-x^*)\perp x^*$, hence $x^*=A^+b$ is the least
+    norm solution.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -337,7 +339,23 @@ linkbordercolor={0 0 1}
 
 \begin{enumerate}[(a)]
     \item
-    The
+    The characteristic polynomial of $A$ is
+    \begin{equation}
+        p(\lambda)=det(\lambda I-A)=(\lambda-\lambda _1)(\lambda-\lambda _2)\ldots
+        (\lambda-\lambda _n) \nonumber
+    \end{equation}
+    Then the coefficients of $\lambda ^{n-1}$ is the sum of eigenvalues.\\
+
+    Consider the computation process of $det(\lambda I-A)$, the only term that contains
+    $\lambda ^{n-1}$ is
+    \begin{equation}
+        \sigma (1,2,3,\ldots,n)(\lambda I-A)_{11}(\lambda I-A)_{22}\ldots(\lambda I-A)_{nn} \nonumber
+    \end{equation}
+    If we expand the equation above, it is easy to find that coefficients of $\lambda ^{n-1}$
+    is the sum of diagonal entries. Hence
+    \begin{equation}
+        tr(A)=\sum_{i=1}\lambda _i \nonumber
+    \end{equation}
     \item
     Using the result from problem 2(c), $\lambda _i^k,\ i=1,2,\ldots,n$
     are eigenvalues of matrix $A^k$. Hence
@@ -353,10 +371,25 @@ linkbordercolor={0 0 1}
 
 \textbf{Solution}
 
-\begin{enumerate}[(a)]
-    \item
-    
-\end{enumerate}
+Use the Schwarz Triangularization Theorem, for the square matrix $A$,
+$A$ could be trangularized by an unitary matrix:
+\begin{equation}
+    A=UTU^H\ ,where\ UU^H=U^HU=I \nonumber
+\end{equation}
+\begin{equation}
+    \Rightarrow ||A||_F=||UTU^H||_F \nonumber
+\end{equation}
+Hence $||A||_F=\sum_{i=1}^{n}\sum_{j=1}^{n}|A_{ij}|^2=||UTU^H||_F$.\\
+
+As for the $||UTU^H||_F$, $||UTU^H||_F=tr[(UTU^H)^HUTU^H]=tr(UT^HTU^H)$,
+\begin{equation}
+    tr(UT^HTU^H)=\sum_{i}\sum_{j}\sum_{k}U_{ij}(T^HT)_{jk}U^H_{ki}=\sum_{j}\sum_{k}\sum_{i}(T^HT)_{jk}U^H_{ki}U_{ij}=tr(T^HTU^HU)=tr(T^HT) \nonumber
+\end{equation}
+\begin{equation}
+    tr(T^HT)=\sum_{i}\sum_{j}T^H_{ij}T_{ji} \ge \sum_{i}T^H_{ii}T_{ii} \nonumber
+\end{equation}
+Because the diagonal elements of $T$ is the eigenvalues of $A$, hence $\sum_{i}T^H_{ii}T_{ii}=\sum_{i=1}^{n}|\lambda_i|^2$.
+In conclusion, $\sum_{i=1}^{n}\sum_{j=1}^{n}|A_{ij}|^2=||A||_F=||UTU^H||_F \ge \sum_{i=1}^{n}|\lambda_i|^2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 5
@@ -364,10 +397,66 @@ linkbordercolor={0 0 1}
 \section*{Problem 5: Limit}
 
 \textbf{Solution}
-
-\begin{enumerate}[(a)]
-    \item
-    The
-\end{enumerate}
-
+\begin{equation}
+    det(\lambda I-A)=\lambda ^2 - 1.2\lambda +0.2=(\lambda -1)(\lambda -0.2) \nonumber
+\end{equation}
+Hence the eigenvalues of matrix $A$ is $\lambda _1=0.2$ and $\lambda _2=1$.
+\begin{equation}
+    A-\lambda _1I=
+    \begin{bmatrix}
+        4 & -1.6 \\
+        12 & -4.8
+    \end{bmatrix}
+    \Rightarrow
+    N(A-\lambda _1I)=span\left\{\begin{bmatrix}
+        0.4 \\
+        1
+    \end{bmatrix}\right\} \nonumber
+\end{equation}
+\begin{equation}
+    A-\lambda _0.2I=
+    \begin{bmatrix}
+        4.8 & -1.6 \\
+        12 & -4
+    \end{bmatrix}
+    \Rightarrow
+    N(A-\lambda _1I)=span\left\{\begin{bmatrix}
+        1 \\
+        3
+    \end{bmatrix}\right\} \nonumber
+\end{equation}
+\begin{equation}
+    \Rightarrow A=P
+    \begin{bmatrix}
+        \lambda _1 & 0 \\
+        0 & \lambda _2
+    \end{bmatrix}
+    P^{-1} \nonumber
+\end{equation}
+where
+\begin{equation}
+    P=\begin{bmatrix}
+        0.4 & 1 \\
+        1   & 3
+    \end{bmatrix} \nonumber
+\end{equation}
+Hence
+\begin{equation}
+    \lim_{n\to\infty} A^n=P
+    \begin{bmatrix}
+        \lambda _1^n & 0 \\
+        0 & \lambda _2^n
+    \end{bmatrix}
+    P^{-1}
+    =P
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & 1
+    \end{bmatrix}
+    P^{-1}
+    =\begin{bmatrix}
+        -5 & 2 \\
+        -15 & 6
+    \end{bmatrix} \nonumber
+\end{equation}
 \end{document}
