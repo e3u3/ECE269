@@ -62,16 +62,17 @@ linkbordercolor={0 0 1}
     Suppose $A^+$ is not unique and there is $A_1^+$ and $A_2^+$. According to the difinition,
     for any matrix $A\in \mathbb{R}^{m\times n}$,
     \begin{equation}
-        AA_1^+A=A \nonumber
+        A=AA_1^+A=A(A_1^+A)^T=AA^T(A_1^+)^T \nonumber
     \end{equation}
     \begin{equation}
-        AA_2^+A=A \nonumber
+        \Rightarrow AA^T(A_1^+-A_2^+)^T=0 \nonumber
     \end{equation}
+    Recall the result of Homework\#2 problem 5(a), $N(AA^T)=N(A^T)$. Then we get
     \begin{equation}
-        \Rightarrow (AA_1^+-AA_2^+)A=A(A_1^+A-A_2^+A)=0 \nonumber
+        A^T(A_1^+-A_2^+)^T=0 \Rightarrow (A_1^+-A_2^+)A=0 \Rightarrow A_1^+A=A_2^+A \nonumber
     \end{equation}
-    Because the above equation is valid for any matrix $A\in \mathbb{R}^{m\times n}$, hence
-    there must be $AA_1^+=AA_2^+$ and $A_1^+A=A_2^+A$. So
+    We can also prove $AA_1^+=AA_2^+$ in the similar way.
+    Because $AA_1^+=AA_2^+$ and $A_1^+A=A_2^+A$,
     \begin{equation}
         A^+_1=A_1^+AA_1^+=A_1^+AA_2^+=A_2^+AA^+_2=A^+_2 \nonumber
     \end{equation}
@@ -164,10 +165,36 @@ linkbordercolor={0 0 1}
         \begin{equation}
             AA^T[(A^+)^TA^+]AA^T=A(A^+A)^TA^+AA^T=A(A^+A)A^+AA^T=AA^+AA^T=AA^T \nonumber
         \end{equation}
+        \begin{equation}
+            (A^+)^TA^+(AA^T)(A^+)^TA^+=(A^+)^TA^+A(A^+A)^TA^+
+            =(A^+)^TA^+AA^+AA^+=(A^+)^TA^+ \nonumber
+        \end{equation}
+        Meanwhile
+        \begin{equation}
+            AA^T[(A^+)^TA^+]=A(A^+A)^TA^+=A(A^+A)A^+
+            =AA^+ \Rightarrow symmetric \nonumber
+        \end{equation}
+        \begin{equation}
+            [(A^+)^TA^+]AA^T=(A^+)^T(A^+A)^TA^T=(A^+AA^+)^TA^T
+            =AA^+ \Rightarrow symmetric \nonumber
+        \end{equation}
         Hence $(AA^T)^+=(A^+)^TA^+$.
         \item
         \begin{equation}
             A^TA[A^+(A^+)^T]A^TA=A^TAA^+(AA^+)^TA=A^TAA^+AA^+A=A^TA \nonumber
+        \end{equation}
+        \begin{equation}
+            A^+(A^+)^T(A^TA)A^+(A^+)^T=A^+AA^+AA^+(A^+)^T
+            =A^+(A^+)^T \nonumber
+        \end{equation}
+        Meanwhile
+        \begin{equation}
+            A^+(A^+)^T(A^TA)=A^+AA^+A
+            =A^+A\Rightarrow symmetric \nonumber
+        \end{equation}
+        \begin{equation}
+            (A^TA)A^+(A^+)^T=(A^+AA^+A)^T=(A^+A)^T
+            =AA^+ \Rightarrow symmetric \nonumber
         \end{equation}
         Hence $(A^TA)^+=A^+(A^+)^T$.
     \end{enumerate}
@@ -192,12 +219,12 @@ linkbordercolor={0 0 1}
         \begin{equation}
             A^+x=A^+AA^+x=A^+(AA^+)^Tx=A^+(A^+)^TA^Tx=0 \nonumber
         \end{equation}
-        So $N(A^T)\subset R(A^+)$.
+        So $N(A^T)\subset N(A^+)$.
         For any $x\in N(A^+)$, $A^+x=0$, hence
         \begin{equation}
             A^Tx=A^T(A^+)^TA^Tx=A^T(AA^+)^Tx=A^TAA^+x=0 \nonumber
         \end{equation}
-        So $N(A^+)\subset R(A^T)$. In conclusion, $N(A^T)=N(A^+)$.
+        So $N(A^+)\subset N(A^T)$. In conclusion, $N(A^T)=N(A^+)$.
     \end{enumerate}
     %%%%%%%%%%%
     % Item (i)
@@ -215,22 +242,40 @@ linkbordercolor={0 0 1}
     % Item (j)
     %%%%%%%%%%%
     \item 
-    Recall the result of problem 5 in Homework 3, $y=Px$ is the projection of $x$
-    onto $R(P)$. For $\forall y \in R(P)$, there must exists $x\in \mathbb{R}^m$ S.T.
-    \begin{equation}
-        y=AA^+x\ \Rightarrow\ y=A(A^+x) \nonumber
-    \end{equation}
-    Hence for $\forall y \in R(P)$, there must exists $z=A^+x\in \mathbb{R}^n$, S.T.
-    $y=Az$. Hence $R(P)=R(A)$. So $y=Px$ is the projection of $x$ onto $R(A)$.\\
+    \begin{enumerate}
+        \item
+        Recall the result of problem 5 in Homework 3, $y=Px$ is the projection of $x$
+        onto $R(P)$. For $\forall y \in R(P)$, there must exists $x\in \mathbb{R}^m$ S.T.
+        \begin{equation}
+            y=AA^+x\ \Rightarrow\ y=A(A^+x) \nonumber
+        \end{equation}
+        Hence for $\forall y \in R(P)$, there must exists $z=A^+x\in \mathbb{R}^n$, S.T.
+        $y=Az$. Hence $R(P) \subset R(A)$.\\
 
-    Similarly, $y=Qx$ is the projection of $x$ onto $R(Q)$. 
-    For $\forall y \in R(Q)$, there must exists $x\in \mathbb{R}^n$ S.T.
-    \begin{equation}
-        y=A^+Ax\ \Rightarrow\ y=A^+(Ax) \nonumber
-    \end{equation}
-    Hence for $\forall y \in R(Q)$, there must exists $z=Ax\in \mathbb{R}^m$, S.T.
-    $y=A^+z$. Hence $R(Q)=R(A^+)=R(A^T)$. So $y=Qx$ is the projection 
-    of $x$ onto $R(A^T)$.
+        For $\forall y \in R(A)$, there must exists $x\in \mathbb{R}^n$ S.T.
+        \begin{equation}
+            y=Ax\ \Rightarrow\ y=AA^+Ax=PAx \nonumber
+        \end{equation}
+        Hence $R(A) \subset R(P)$.\\
+        
+        So $R(A) = R(P)$ and $y=Px$ is the projection of $x$ onto $R(A)$.
+        \item 
+        Similarly, $y=Qx$ is the projection of $x$ onto $R(Q)$. 
+        For $\forall y \in R(Q)$, there must exists $x\in \mathbb{R}^n$ S.T.
+        \begin{equation}
+            y=A^+Ax\ \Rightarrow\ y=A^+(Ax) \nonumber
+        \end{equation}
+        Hence for $\forall y \in R(Q)$, there must exists $z=Ax\in \mathbb{R}^m$, S.T.
+        $y=A^+z$. Hence $R(Q)\subset R(A^+)=R(A^T)$.\\
+        
+        For $\forall y \in R(A^+)$, there must exists $x\in \mathbb{R}^m$ S.T.
+        \begin{equation}
+            y=A^+x\ \Rightarrow\ y=(A^+A)A^+x \nonumber
+        \end{equation}
+        Hence $R(A^+)=R(A^T)\subset R(Q)$.\\
+
+        So $R(A^T) = R(Q)$ and $y=Qx$ is the projection  of $x$ onto $R(A^T)$.
+    \end{enumerate}
     %%%%%%%%%%%
     % Item (k)
     %%%%%%%%%%%
@@ -247,7 +292,11 @@ linkbordercolor={0 0 1}
     %%%%%%%%%%%
     \item 
     It is clear that $x^*=A^+b=A^+Ax$ is the orthogonal projection of x
-    onto $R(A)$. Hence $(x-x^*)\perp x^*$, hence $x^*=A^+b$ is the least
+    onto $R(A^+A)$. Hence $(x-x^*)\perp x^*$. Then
+    \begin{equation}
+        ||x||_2^2=<x^*+x-x^*,x^*+x-x^*>=||x^*||^2_2+||x-x^*||^2_2 \ge ||x^*||^2_2 \nonumber
+    \end{equation}
+    Hence $x^*=A^+b$ is the least
     norm solution.
 \end{enumerate}
 
@@ -294,7 +343,7 @@ linkbordercolor={0 0 1}
     \begin{equation}
         Av=\lambda v =0 \nonumber
     \end{equation}
-    Obviously $v\in N(A)$. Because $A$ is invertible, so $dim(N(A)=0)\Rightarrow N(A)={0}$. Hence
+    Obviously $v\in N(A)$. Because $A$ is invertible, so $dim(N(A))=0\Rightarrow N(A)={0}$. Hence
     $v=0$. But this contradicts the fact that $v\neq 0$. So if $A$ is invertible, it does not have
     a zero eigenvalue.\\
 
@@ -314,7 +363,8 @@ linkbordercolor={0 0 1}
     \end{equation}
     Hence $\lambda _i^{-1},\ i=1,2,\ldots,n$ are eigenvalues of $A^{-1}$.
     \item
-    The characteristic polynomial of $T^{-1}AT$ is
+    It is clear that both $T^{-1}AT$ and $A$
+    are square matrix and the same size. The characteristic polynomial of $T^{-1}AT$ is
     \begin{equation}
         \begin{split}
             det(T^{-1}AT-\lambda I)&=det(T^{-1}AT-\lambda T^{-1}IT) \\
@@ -344,7 +394,7 @@ linkbordercolor={0 0 1}
         p(\lambda)=det(\lambda I-A)=(\lambda-\lambda _1)(\lambda-\lambda _2)\ldots
         (\lambda-\lambda _n) \nonumber
     \end{equation}
-    Then the coefficients of $\lambda ^{n-1}$ is the sum of eigenvalues.\\
+    Then the coefficients of $\lambda ^{n-1}$ is the nagetive sum of eigenvalues.\\
 
     Consider the computation process of $det(\lambda I-A)$, the only term that contains
     $\lambda ^{n-1}$ is
@@ -352,7 +402,7 @@ linkbordercolor={0 0 1}
         \sigma (1,2,3,\ldots,n)(\lambda I-A)_{11}(\lambda I-A)_{22}\ldots(\lambda I-A)_{nn} \nonumber
     \end{equation}
     If we expand the equation above, it is easy to find that coefficients of $\lambda ^{n-1}$
-    is the sum of diagonal entries. Hence
+    is the nagetive sum of diagonal entries. Hence
     \begin{equation}
         tr(A)=\sum_{i=1}\lambda _i \nonumber
     \end{equation}
@@ -402,19 +452,19 @@ In conclusion, $\sum_{i=1}^{n}\sum_{j=1}^{n}|A_{ij}|^2=||A||_F=||UTU^H||_F \ge \
 \end{equation}
 Hence the eigenvalues of matrix $A$ is $\lambda _1=0.2$ and $\lambda _2=1$.
 \begin{equation}
-    A-\lambda _1I=
+    A-\lambda _2I=
     \begin{bmatrix}
         4 & -1.6 \\
         12 & -4.8
     \end{bmatrix}
     \Rightarrow
-    N(A-\lambda _1I)=span\left\{\begin{bmatrix}
+    N(A-\lambda _2I)=span\left\{\begin{bmatrix}
         0.4 \\
         1
     \end{bmatrix}\right\} \nonumber
 \end{equation}
 \begin{equation}
-    A-\lambda _0.2I=
+    A-\lambda _1I=
     \begin{bmatrix}
         4.8 & -1.6 \\
         12 & -4
@@ -436,8 +486,8 @@ Hence the eigenvalues of matrix $A$ is $\lambda _1=0.2$ and $\lambda _2=1$.
 where
 \begin{equation}
     P=\begin{bmatrix}
-        0.4 & 1 \\
-        1   & 3
+        1 & 0.4 \\
+        3 & 1
     \end{bmatrix} \nonumber
 \end{equation}
 Hence
@@ -455,8 +505,8 @@ Hence
     \end{bmatrix}
     P^{-1}
     =\begin{bmatrix}
-        -5 & 2 \\
-        -15 & 6
+        6 & -2 \\
+        15 & -5
     \end{bmatrix} \nonumber
 \end{equation}
 \end{document}
